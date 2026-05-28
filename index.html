@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website of Muhammad Anas Tahir — Data Science student at Duke Kunshan University & Duke University, researcher, and community leader.">
+    <meta name="description" content="Muhammad Anas Tahir — Data Science student, researcher, and community leader at Duke Kunshan University.">
     <title>Muhammad Anas Tahir</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,12 +16,14 @@
     <!-- NAVIGATION -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-brand">Home</a>
+            <a href="#" class="nav-brand" data-page="home">Anas Tahir</a>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#research" class="nav-link">Research</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#more" class="nav-link">More</a></li>
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="research">Research</a></li>
+                <li><a href="#" class="nav-link" data-page="projects">Projects</a></li>
+                <li><a href="#" class="nav-link" data-page="experience">Experience</a></li>
+                <li><a href="#" class="nav-link" data-page="more">More</a></li>
             </ul>
 
             <div class="nav-actions">
@@ -37,377 +39,375 @@
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="hero" class="hero">
-        <div class="container hero-container">
-            <div class="hero-text">
-                <span class="hero-greeting">Hi, I'm</span>
-                <h1 class="hero-name">Muhammad Anas Tahir</h1>
-                <p class="hero-tagline">Data Science Student &amp; Researcher</p>
-                <p class="hero-subtitle">Duke Kunshan University &amp; Duke University &middot; Class of 2029</p>
-                <div class="hero-cta">
-                    <a href="#research" class="btn btn-primary">View My Work</a>
-                    <a href="#more" class="btn btn-outline">My Experience</a>
-                </div>
-                <div class="hero-social">
-                    <a href="https://github.com/MuhammadAnasTahir" class="social-btn" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="http://www.linkedin.com/in/muhammad-anas-tahir-3bb57619a" class="social-btn" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://outlook.office.com/mail/deeplink/compose?to=mt508@duke.edu" class="social-btn" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                        <span>mt508@duke.edu</span>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image-wrap">
-                <div class="hero-image-frame">
-                    <img src="assets/profile.png" alt="Muhammad Anas Tahir" class="hero-img">
-                </div>
-            </div>
-        </div>
-        <a href="#about" class="scroll-hint" aria-label="Scroll down">
-            <span>&#8595;</span>
-        </a>
-    </section>
+    <!-- ═══════════════ HOME PAGE ═══════════════ -->
+    <div class="page-section active" id="page-home">
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-label">About Me</div>
-            <h2 class="section-title">Who I Am</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>I'm a Data Science student at Duke Kunshan University and Duke University (Class of 2029), driven by the intersection of machine learning, research, and real-world impact. A 95% merit scholarship recipient, I bring both academic rigor and genuine curiosity to every problem I tackle.</p>
-                    <p>Currently, I work as a Research Assistant on <strong>Large Language Models for Algorithm Design (LLM4AD)</strong>, exploring how AI can enhance computational optimization. Before DKU, I conducted quantitative research at LUMS under a postdoctoral fellow from MIT.</p>
-                    <p>Beyond research, I believe in community. I represent students on the Student Leaders Board, tutor peers in Chinese, and help coordinate large-scale sporting events on campus.</p>
+        <section class="hero" id="hero">
+            <canvas id="neural-canvas" class="neural-canvas"></canvas>
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <span class="hero-greeting">Hi, I'm</span>
+                    <h1 class="hero-name">Muhammad Anas Tahir</h1>
+                    <p class="hero-tagline">Data Science Student &amp; Researcher</p>
+                    <p class="hero-subtitle">Duke Kunshan University &amp; Duke University &middot; Class of 2029</p>
+                    <div class="hero-cta">
+                        <a href="#" class="btn btn-primary" data-page="research">View My Work</a>
+                        <a href="#" class="btn btn-outline" data-page="experience">My Experience</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/MuhammadAnasTahir" class="social-btn" target="_blank" rel="noopener noreferrer">
+                            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="http://www.linkedin.com/in/muhammad-anas-tahir-3bb57619a" class="social-btn" target="_blank" rel="noopener noreferrer">
+                            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://outlook.office.com/mail/deeplink/compose?to=mt508@duke.edu" class="social-btn" target="_blank" rel="noopener noreferrer">
+                            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <span>mt508@duke.edu</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="about-highlights">
-                    <div class="highlight-card">
-                        <span class="highlight-icon">&#127891;</span>
-                        <div>
-                            <strong>95% Merit Scholarship</strong>
-                            <span>Duke Kunshan University</span>
-                        </div>
+                <div class="hero-image-wrap">
+                    <div class="hero-image-frame">
+                        <img src="assets/profile.png" alt="Muhammad Anas Tahir" class="hero-img">
                     </div>
-                    <div class="highlight-card">
-                        <span class="highlight-icon">&#128300;</span>
-                        <div>
-                            <strong>Active Researcher</strong>
-                            <span>LLM &amp; Algorithm Design</span>
-                        </div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-hint" aria-label="Scroll down">&#8595;</a>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-label">About Me</div>
+                <h2 class="section-title">Who I Am</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>I'm a Data Science student at Duke Kunshan University and Duke University (Class of 2029), driven by the intersection of machine learning, research, and real-world impact. A 95% merit scholarship recipient, I bring both academic rigor and genuine curiosity to every problem I tackle.</p>
+                        <p>Currently, I work as a Research Assistant on <strong>Large Language Models for Algorithm Design (LLM4AD)</strong>, exploring how AI can enhance computational optimization. Before DKU, I conducted quantitative research at LUMS under a postdoctoral fellow from MIT.</p>
+                        <p>Beyond research, I believe in community. I represent students on the Student Leaders Board, tutor peers in Chinese, and help coordinate large-scale sporting events on campus.</p>
                     </div>
-                    <div class="highlight-card">
-                        <span class="highlight-icon">&#127760;</span>
-                        <div>
-                            <strong>3 Languages</strong>
-                            <span>English, Chinese, Urdu &amp; Punjabi</span>
+                    <div class="about-highlights">
+                        <div class="highlight-card">
+                            <span class="highlight-icon">&#127891;</span>
+                            <div><strong>95% Merit Scholarship</strong><span>Duke Kunshan University</span></div>
                         </div>
-                    </div>
-                    <div class="highlight-card">
-                        <span class="highlight-icon">&#127942;</span>
-                        <div>
-                            <strong>Student Leader</strong>
-                            <span>SLB Board Member at DKU</span>
+                        <div class="highlight-card">
+                            <span class="highlight-icon">&#128300;</span>
+                            <div><strong>Active Researcher</strong><span>LLM &amp; Algorithm Design</span></div>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="highlight-icon">&#127760;</span>
+                            <div><strong>3 Languages</strong><span>English, Chinese, Urdu &amp; Punjabi</span></div>
+                        </div>
+                        <div class="highlight-card">
+                            <span class="highlight-icon">&#127942;</span>
+                            <div><strong>Student Leader</strong><span>SLB Board Member at DKU</span></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="section section-alt">
-        <div class="container">
-            <div class="section-label">Education</div>
-            <h2 class="section-title">Academic Background</h2>
-            <div class="edu-card card">
-                <div class="card-header">
-                    <div>
-                        <h3>Duke Kunshan University &amp; Duke University</h3>
-                        <p class="card-subtitle">Bachelor of Science in Data Science &mdash; Dual Degree</p>
+        <section id="education" class="section section-alt">
+            <div class="container">
+                <div class="section-label">Education</div>
+                <h2 class="section-title">Academic Background</h2>
+                <div class="edu-card card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Duke Kunshan University &amp; Duke University</h3>
+                            <p class="card-subtitle">Bachelor of Science in Data Science &mdash; Dual Degree</p>
+                        </div>
+                        <span class="badge">Class of 2029</span>
                     </div>
-                    <span class="badge">Class of 2029</span>
+                    <div class="edu-meta">
+                        <span class="tag">&#128205; Kunshan, China &amp; Durham, U.S.</span>
+                        <span class="tag">&#127885; 95% Merit Scholarship</span>
+                    </div>
+                    <div class="edu-body">
+                        <div class="edu-col">
+                            <h4>Core Courses</h4>
+                            <ul>
+                                <li>Introduction to Programming &amp; Data Structures</li>
+                                <li>Probability and Statistics</li>
+                                <li>Linear Algebra</li>
+                                <li>Calculus I &amp; Physics</li>
+                                <li>Computation, Society and Culture</li>
+                            </ul>
+                        </div>
+                        <div class="edu-col">
+                            <h4>Activities</h4>
+                            <ul>
+                                <li>AI Club &amp; Computer Science Club</li>
+                                <li>Global Student Ambassador</li>
+                                <li>Global Citizenship Living Learning Community</li>
+                                <li>Sino-Foreign Model United Nations (organizer)</li>
+                                <li>Tennis Club</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="edu-meta">
-                    <span class="tag">&#128205; Kunshan, China &amp; Durham, U.S.</span>
-                    <span class="tag">&#127885; 95% Merit Scholarship</span>
-                </div>
-                <div class="edu-body">
-                    <div class="edu-col">
-                        <h4>Core Courses</h4>
-                        <ul>
-                            <li>Introduction to Programming &amp; Data Structures</li>
-                            <li>Probability and Statistics</li>
-                            <li>Linear Algebra</li>
-                            <li>Calculus I &amp; Physics</li>
-                            <li>Computation, Society and Culture</li>
+            </div>
+        </section>
+
+    </div><!-- /page-home -->
+
+    <!-- ═══════════════ RESEARCH PAGE ═══════════════ -->
+    <div class="page-section" id="page-research">
+        <section class="section page-top">
+            <div class="container">
+                <div class="section-label">Research</div>
+                <h2 class="section-title">Academic Research</h2>
+                <div class="cards-grid">
+
+                    <article class="card project-card">
+                        <div class="card-tag">Research &middot; Ongoing</div>
+                        <h3>Large Language Models for Algorithm Design</h3>
+                        <p class="card-meta">Duke Kunshan University &middot; Mar 2026 &ndash; Present</p>
+                        <p class="card-desc">Under Dr. Mustafa Misir, Associate Professor of Data &amp; Computational Science.</p>
+                        <ul class="card-list">
+                            <li>Evaluating LLM-assisted pipelines for algorithm design, integrating large language models with iterative search methods (evolutionary &amp; neighborhood search) to optimize candidate solutions.</li>
+                            <li>Implementing and experimenting within a unified Python framework to systematically compare LLM roles — generation, prediction, and optimization — across algorithmic tasks.</li>
                         </ul>
-                    </div>
-                    <div class="edu-col">
-                        <h4>Activities</h4>
-                        <ul>
-                            <li>AI Club &amp; Computer Science Club</li>
-                            <li>Global Student Ambassador</li>
-                            <li>Global Citizenship Living Learning Community</li>
-                            <li>Sino-Foreign Model United Nations (organizer)</li>
-                            <li>Tennis Club</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RESEARCH -->
-    <section id="research" class="section">
-        <div class="container">
-            <div class="section-label">Research</div>
-            <h2 class="section-title">Academic Research</h2>
-            <div class="cards-grid">
-
-                <article class="card project-card">
-                    <div class="card-tag">Research &middot; Ongoing</div>
-                    <h3>Large Language Models for Algorithm Design</h3>
-                    <p class="card-meta">Duke Kunshan University &middot; Mar 2026 &ndash; Present</p>
-                    <p class="card-desc">Under Dr. Mustafa Misir, Associate Professor of Data &amp; Computational Science.</p>
-                    <ul class="card-list">
-                        <li>Evaluating LLM-assisted pipelines for algorithm design, integrating large language models with iterative search methods (evolutionary &amp; neighborhood search) to optimize candidate solutions.</li>
-                        <li>Implementing and experimenting within a unified Python framework to systematically compare LLM roles — generation, prediction, and optimization — across algorithmic tasks.</li>
-                    </ul>
-                    <div class="card-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LLMs</span>
-                        <span class="tech-tag">Algorithm Design</span>
-                        <span class="tech-tag">Optimization</span>
-                    </div>
-                </article>
-
-                <article class="card project-card">
-                    <div class="card-tag">Research &middot; Completed</div>
-                    <h3>Coffee Chemistry &amp; Flavor Analysis</h3>
-                    <p class="card-meta">Lahore University of Management Sciences &middot; Aug &ndash; Dec 2024</p>
-                    <p class="card-desc">Under Dr. Qasim Imtiaz, Postdoctoral Fellow at MIT.</p>
-                    <ul class="card-list">
-                        <li>Conducted quantitative analysis of coffee's chemical &amp; physical composition; analyzed effects of roast time, temperature, and water on flavor using mass spectrometry and refractometry.</li>
-                        <li>Applied statistics and correlation analysis on obtained data; generated visualizations revealing trends between brewing conditions and flavor-related indicators.</li>
-                    </ul>
-                    <div class="card-tech">
-                        <span class="tech-tag">MATLAB</span>
-                        <span class="tech-tag">Excel</span>
-                        <span class="tech-tag">Data Visualization</span>
-                        <span class="tech-tag">Statistics</span>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section section-alt">
-        <div class="container">
-            <div class="section-label">Projects</div>
-            <h2 class="section-title">What I've Built</h2>
-            <div class="cards-grid">
-
-                <article class="card project-card">
-                    <div class="card-tag">Project &middot; Complete</div>
-                    <h3>Personal Portfolio Website</h3>
-                    <p class="card-meta">May 2026</p>
-                    <p class="card-desc">You're looking at it. Built from scratch as a learning project.</p>
-                    <ul class="card-list">
-                        <li>Designed and built a fully responsive personal website with dark/light mode theming using CSS custom properties and localStorage for preference persistence.</li>
-                        <li>Deployed to GitHub Pages with full version control via Git — updates go live within 30 seconds of a push.</li>
-                    </ul>
-                    <div class="card-tech">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Git</span>
-                        <span class="tech-tag">GitHub Pages</span>
-                    </div>
-                    <a href="https://github.com/MuhammadAnasTahir/MuhammadAnasTahir.github.io" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub &#8594;</a>
-                </article>
-
-                <article class="card project-card project-placeholder">
-                    <div class="card-tag">Coming Soon</div>
-                    <h3>More Projects</h3>
-                    <p class="card-desc">New projects in progress. Check back soon.</p>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- MORE — Experience, Leadership & Skills -->
-    <section id="more" class="section">
-        <div class="container">
-            <div class="section-label">Experience &amp; Leadership</div>
-            <h2 class="section-title">What I've Done</h2>
-
-            <div class="timeline">
-
-                <div class="timeline-item card">
-                    <div class="timeline-header">
-                        <div>
-                            <h3>Sports Complex Associate &amp; Senior Event Associate</h3>
-                            <p class="card-meta">Department of Athletics, Duke Kunshan University &middot; Aug 2025 &ndash; Present</p>
-                        </div>
-                        <span class="badge badge-green">Current</span>
-                    </div>
-                    <ul class="card-list">
-                        <li>Managed front-desk operations including member check-ins, facility inquiries, and sports equipment tracking; coordinated logistics for inter-university tournaments including the DKU Invitational Cup and Sino-Foreign University Cup.</li>
-                        <li>Contributed to events with 1,000+ participants and delivered consistent services to 2,000+ registered sports complex members.</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item card">
-                    <div class="timeline-header">
-                        <div>
-                            <h3>Chinese Language Peer Tutor</h3>
-                            <p class="card-meta">Language and Culture Center, DKU &middot; Jan 2026 &ndash; Present</p>
-                        </div>
-                        <span class="badge badge-green">Current</span>
-                    </div>
-                    <ul class="card-list">
-                        <li>Supporting international students in improving their spoken and written Chinese for academic and daily communication.</li>
-                        <li>Conducting peer tutoring sessions focused on conversational practice, vocabulary, and grammar clarification.</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item card">
-                    <div class="timeline-header">
-                        <div>
-                            <h3>Board Member &mdash; Student Leaders Board (SLB)</h3>
-                            <p class="card-meta">Duke Kunshan University &middot; Dec 2025 &ndash; Present</p>
-                        </div>
-                        <span class="badge badge-green">Current</span>
-                    </div>
-                    <ul class="card-list">
-                        <li>Working with students, faculty, and administrators to identify issues, propose solutions, and advance community-focused initiatives.</li>
-                        <li>Representing students and advocating for improvements to academic, residential, and co-curricular experiences.</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item card">
-                    <div class="timeline-header">
-                        <div>
-                            <h3>SPICE Committee Member</h3>
-                            <p class="card-meta">Student Partnership for Innovation &amp; Change in Education, DKU &middot; Jan 2026 &ndash; Present</p>
-                        </div>
-                        <span class="badge badge-green">Current</span>
-                    </div>
-                    <ul class="card-list">
-                        <li>Working with the Dean of Academic Strategy and Innovation to ensure collaboration between students and academic offices on educational innovation and improved teaching and learning environment.</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item card">
-                    <div class="timeline-header">
-                        <div>
-                            <h3>Marketing Intern</h3>
-                            <p class="card-meta">INSIDER (SMC-PVT) LTD, Lahore, Pakistan &middot; June &ndash; July 2023</p>
-                        </div>
-                    </div>
-                    <ul class="card-list">
-                        <li>Designed marketing strategy by analyzing sales and marketing trends through SEMrush and Excel.</li>
-                        <li>Increased viewership by <strong>70%</strong> and received endorsement from the company CEO.</li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="skills-block">
-                <div class="section-label">Skills</div>
-                <div class="skills-grid">
-
-                    <div class="skill-category card">
-                        <h3>Programming</h3>
-                        <div class="skill-tags">
+                        <div class="card-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">VB.net</span>
-                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">LLMs</span>
+                            <span class="tech-tag">Algorithm Design</span>
+                            <span class="tech-tag">Optimization</span>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="skill-category card">
-                        <h3>Data &amp; Analysis</h3>
-                        <div class="skill-tags">
+                    <article class="card project-card">
+                        <div class="card-tag">Research &middot; Completed</div>
+                        <h3>Coffee Chemistry &amp; Flavor Analysis</h3>
+                        <p class="card-meta">Lahore University of Management Sciences &middot; Aug &ndash; Dec 2024</p>
+                        <p class="card-desc">Under Dr. Qasim Imtiaz, Postdoctoral Fellow at MIT.</p>
+                        <ul class="card-list">
+                            <li>Conducted quantitative analysis of coffee's chemical &amp; physical composition; analyzed effects of roast time, temperature, and water on flavor using mass spectrometry and refractometry.</li>
+                            <li>Applied statistics and correlation analysis; generated visualizations revealing trends between brewing conditions and flavor-related indicators.</li>
+                        </ul>
+                        <div class="card-tech">
+                            <span class="tech-tag">MATLAB</span>
                             <span class="tech-tag">Excel</span>
                             <span class="tech-tag">Data Visualization</span>
                             <span class="tech-tag">Statistics</span>
-                            <span class="tech-tag">Correlation Analysis</span>
                         </div>
-                    </div>
-
-                    <div class="skill-category card">
-                        <h3>Tools &amp; Design</h3>
-                        <div class="skill-tags">
-                            <span class="tech-tag">Adobe Suite</span>
-                            <span class="tech-tag">MS Office</span>
-                            <span class="tech-tag">Canva</span>
-                            <span class="tech-tag">SEMrush</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category card">
-                        <h3>Languages</h3>
-                        <div class="skill-tags">
-                            <span class="tech-tag">English &mdash; Fluent</span>
-                            <span class="tech-tag">Urdu &mdash; Native</span>
-                            <span class="tech-tag">Punjabi &mdash; Native</span>
-                            <span class="tech-tag">Chinese &mdash; Beginner</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category card">
-                        <h3>Certificates</h3>
-                        <div class="skill-tags">
-                            <span class="tech-tag">AI &amp; Machine Learning</span>
-                            <span class="tech-tag">Python Full Course</span>
-                            <span class="tech-tag">Climate Change &amp; Human Rights</span>
-                        </div>
-                    </div>
+                    </article>
 
                 </div>
             </div>
+        </section>
+    </div><!-- /page-research -->
 
-        </div>
-    </section>
+    <!-- ═══════════════ PROJECTS PAGE ═══════════════ -->
+    <div class="page-section" id="page-projects">
+        <section class="section page-top">
+            <div class="container">
+                <div class="section-label">Projects</div>
+                <h2 class="section-title">What I've Built</h2>
+                <div class="cards-grid">
 
-    <!-- FOOTER -->
+                    <article class="card project-card">
+                        <div class="card-tag">Project &middot; Complete</div>
+                        <h3>Personal Portfolio Website</h3>
+                        <p class="card-meta">May 2026</p>
+                        <p class="card-desc">You're looking at it. Built from scratch as a learning project.</p>
+                        <ul class="card-list">
+                            <li>Designed and built a fully responsive personal website with dark/light mode theming using CSS custom properties and localStorage for preference persistence.</li>
+                            <li>Deployed to GitHub Pages with full version control via Git — updates go live within 30 seconds of a push.</li>
+                        </ul>
+                        <div class="card-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">GitHub Pages</span>
+                        </div>
+                        <a href="https://github.com/MuhammadAnasTahir/MuhammadAnasTahir.github.io" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub &#8594;</a>
+                    </article>
+
+                    <article class="card project-card project-placeholder">
+                        <div class="card-tag">Coming Soon</div>
+                        <h3>More Projects</h3>
+                        <p class="card-desc">New projects in progress. Check back soon.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </div><!-- /page-projects -->
+
+    <!-- ═══════════════ EXPERIENCE PAGE ═══════════════ -->
+    <div class="page-section" id="page-experience">
+        <section class="section page-top">
+            <div class="container">
+                <div class="section-label">Experience</div>
+                <h2 class="section-title">Experience</h2>
+                <div class="coming-soon-block">
+                    <div class="coming-soon-icon">&#9881;</div>
+                    <p>This section is being put together.</p>
+                    <span>Check back soon.</span>
+                </div>
+            </div>
+        </section>
+    </div><!-- /page-experience -->
+
+    <!-- ═══════════════ MORE PAGE ═══════════════ -->
+    <div class="page-section" id="page-more">
+        <section class="section page-top">
+            <div class="container">
+                <div class="section-label">Experience &amp; Leadership</div>
+                <h2 class="section-title">What I've Done</h2>
+
+                <div class="timeline">
+
+                    <div class="timeline-item card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Sports Complex Associate &amp; Senior Event Associate</h3>
+                                <p class="card-meta">Department of Athletics, Duke Kunshan University &middot; Aug 2025 &ndash; Present</p>
+                            </div>
+                            <span class="badge badge-green">Current</span>
+                        </div>
+                        <ul class="card-list">
+                            <li>Managed front-desk operations including member check-ins, facility inquiries, and sports equipment tracking; coordinated logistics for inter-university tournaments including the DKU Invitational Cup and Sino-Foreign University Cup.</li>
+                            <li>Contributed to events with 1,000+ participants and delivered consistent services to 2,000+ registered sports complex members.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Chinese Language Peer Tutor</h3>
+                                <p class="card-meta">Language and Culture Center, DKU &middot; Jan 2026 &ndash; Present</p>
+                            </div>
+                            <span class="badge badge-green">Current</span>
+                        </div>
+                        <ul class="card-list">
+                            <li>Supporting international students in improving their spoken and written Chinese for academic and daily communication.</li>
+                            <li>Conducting peer tutoring sessions focused on conversational practice, vocabulary, and grammar clarification.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Board Member &mdash; Student Leaders Board (SLB)</h3>
+                                <p class="card-meta">Duke Kunshan University &middot; Dec 2025 &ndash; Present</p>
+                            </div>
+                            <span class="badge badge-green">Current</span>
+                        </div>
+                        <ul class="card-list">
+                            <li>Working with students, faculty, and administrators to identify issues, propose solutions, and advance community-focused initiatives.</li>
+                            <li>Representing students and advocating for improvements to academic, residential, and co-curricular experiences.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>SPICE Committee Member</h3>
+                                <p class="card-meta">Student Partnership for Innovation &amp; Change in Education, DKU &middot; Jan 2026 &ndash; Present</p>
+                            </div>
+                            <span class="badge badge-green">Current</span>
+                        </div>
+                        <ul class="card-list">
+                            <li>Working with the Dean of Academic Strategy and Innovation to ensure collaboration between students and academic offices on educational innovation and improved teaching and learning environment.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Marketing Intern</h3>
+                                <p class="card-meta">INSIDER (SMC-PVT) LTD, Lahore, Pakistan &middot; June &ndash; July 2023</p>
+                            </div>
+                        </div>
+                        <ul class="card-list">
+                            <li>Designed marketing strategy by analyzing sales and marketing trends through SEMrush and Excel.</li>
+                            <li>Increased viewership by <strong>70%</strong> and received endorsement from the company CEO.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="skills-block">
+                    <div class="section-label">Skills</div>
+                    <div class="skills-grid">
+
+                        <div class="skill-category card">
+                            <h3>Programming</h3>
+                            <div class="skill-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">VB.net</span>
+                                <span class="tech-tag">MATLAB</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category card">
+                            <h3>Data &amp; Analysis</h3>
+                            <div class="skill-tags">
+                                <span class="tech-tag">Excel</span>
+                                <span class="tech-tag">Data Visualization</span>
+                                <span class="tech-tag">Statistics</span>
+                                <span class="tech-tag">Correlation Analysis</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category card">
+                            <h3>Tools &amp; Design</h3>
+                            <div class="skill-tags">
+                                <span class="tech-tag">Adobe Suite</span>
+                                <span class="tech-tag">MS Office</span>
+                                <span class="tech-tag">Canva</span>
+                                <span class="tech-tag">SEMrush</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category card">
+                            <h3>Languages</h3>
+                            <div class="skill-tags">
+                                <span class="tech-tag">English &mdash; Fluent</span>
+                                <span class="tech-tag">Urdu &mdash; Native</span>
+                                <span class="tech-tag">Punjabi &mdash; Native</span>
+                                <span class="tech-tag">Chinese &mdash; Beginner</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category card">
+                            <h3>Certificates</h3>
+                            <div class="skill-tags">
+                                <span class="tech-tag">AI &amp; Machine Learning</span>
+                                <span class="tech-tag">Python Full Course</span>
+                                <span class="tech-tag">Climate Change &amp; Human Rights</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div><!-- /page-more -->
+
+    <!-- FOOTER — persistent across all pages -->
     <footer class="footer">
         <div class="container footer-inner">
             <div class="footer-contact">
                 <a href="https://github.com/MuhammadAnasTahir" class="footer-link" target="_blank" rel="noopener noreferrer">
-                    <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                    </svg>
+                    <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                     <span>MuhammadAnasTahir</span>
                 </a>
                 <a href="http://www.linkedin.com/in/muhammad-anas-tahir-3bb57619a" class="footer-link" target="_blank" rel="noopener noreferrer">
-                    <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
+                    <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     <span>muhammad-anas-tahir</span>
                 </a>
                 <a href="https://outlook.office.com/mail/deeplink/compose?to=mt508@duke.edu" class="footer-link" target="_blank" rel="noopener noreferrer">
-                    <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
+                    <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     <span>mt508@duke.edu</span>
                 </a>
             </div>
