@@ -44,33 +44,19 @@ navLinks.querySelectorAll('a').forEach(link => {
 
 
 /* ═══════════════════════════════════════
-   ACTIVE NAV HIGHLIGHT ON SCROLL
-   Watches which section is in view and
-   highlights the matching nav link.
+   ACTIVE NAV HIGHLIGHT ON CLICK ONLY
+   Tabs only change when the user clicks,
+   not automatically on scroll.
 ═══════════════════════════════════════ */
 
-const sections    = document.querySelectorAll('section[id]');
-const navLinkEls  = document.querySelectorAll('.nav-link');
+const navLinkEls = document.querySelectorAll('.nav-link');
 
-function updateActiveNav() {
-    const scrollY = window.scrollY + 80; // offset for fixed navbar height
-
-    sections.forEach(section => {
-        const top    = section.offsetTop;
-        const height = section.offsetHeight;
-        const id     = section.getAttribute('id');
-        const link   = document.querySelector(`.nav-link[href="#${id}"]`);
-
-        if (!link) return;
-
-        if (scrollY >= top && scrollY < top + height) {
-            navLinkEls.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        }
+navLinkEls.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinkEls.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
     });
-}
-
-window.addEventListener('scroll', updateActiveNav, { passive: true });
+});
 
 
 /* ═══════════════════════════════════════
