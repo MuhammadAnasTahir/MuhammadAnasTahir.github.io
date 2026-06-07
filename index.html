@@ -17,7 +17,6 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-brand" data-page="home">Anas Tahir</a>
-
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
                 <li><a href="#" class="nav-link" data-page="research">Research</a></li>
@@ -25,52 +24,60 @@
                 <li><a href="#" class="nav-link" data-page="experience">Experience</a></li>
                 <li><a href="#" class="nav-link" data-page="more">More</a></li>
             </ul>
-
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
                     <span id="themeIcon">☀</span>
                 </button>
-                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- ═══════════════ HOME PAGE ═══════════════ -->
+    <!-- ═══════ HOME ═══════ -->
     <div class="page-section active" id="page-home">
 
         <section class="hero" id="hero">
             <canvas id="neural-canvas" class="neural-canvas"></canvas>
 
-            <div class="hero-center">
-                <div class="hero-image-frame">
+            <div class="container hero-container">
+                <!-- LEFT: text -->
+                <div class="hero-text">
+                    <span class="hero-greeting">Hi, I'm</span>
+                    <h1 class="hero-name">Muhammad<br>Anas Tahir</h1>
+                    <p class="hero-tagline">Data Science Student &amp; Researcher</p>
+                    <p class="hero-subtitle">Duke Kunshan University &amp; Duke University &middot; Class of 2029</p>
+
+                    <!-- Social icon buttons — square, clearly visible -->
+                    <div class="hero-social">
+                        <a href="https://github.com/MuhammadAnasTahir"
+                           class="social-icon-btn social-github"
+                           target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="http://www.linkedin.com/in/muhammad-anas-tahir-3bb57619a"
+                           class="social-icon-btn social-linkedin"
+                           target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://outlook.office.com/mail/deeplink/compose?to=mt508@duke.edu"
+                           class="social-icon-btn social-email"
+                           target="_blank" rel="noopener noreferrer" aria-label="Email">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RIGHT: portrait rectangle image -->
+                <div class="hero-image-wrap">
                     <img src="assets/profile.png" alt="Muhammad Anas Tahir" class="hero-img">
-                </div>
-
-                <h1 class="hero-name">Muhammad Anas Tahir</h1>
-                <p class="hero-tagline">Data Science Student &amp; Researcher</p>
-                <p class="hero-subtitle">Duke Kunshan University &amp; Duke University &middot; Class of 2029</p>
-
-                <div class="hero-cta">
-                    <a href="#" class="btn btn-primary" data-page="research">View My Work</a>
-                    <a href="#" class="btn btn-outline" data-page="experience">My Experience</a>
-                </div>
-
-                <!-- Icon-only social buttons with brand colours on hover -->
-                <div class="hero-social">
-                    <a href="https://github.com/MuhammadAnasTahir" class="social-icon-btn social-github"
-                       target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                    <a href="http://www.linkedin.com/in/muhammad-anas-tahir-3bb57619a" class="social-icon-btn social-linkedin"
-                       target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://outlook.office.com/mail/deeplink/compose?to=mt508@duke.edu" class="social-icon-btn social-email"
-                       target="_blank" rel="noopener noreferrer" aria-label="Email">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    </a>
                 </div>
             </div>
         </section>
@@ -139,7 +146,7 @@
 
     </div><!-- /page-home -->
 
-    <!-- ═══════════════ RESEARCH PAGE ═══════════════ -->
+    <!-- ═══════ RESEARCH ═══════ -->
     <div class="page-section" id="page-research">
         <section class="section page-top">
             <div class="container">
@@ -156,10 +163,8 @@
                             <li>Implementing and experimenting within a unified Python framework to systematically compare LLM roles — generation, prediction, and optimization — across algorithmic tasks.</li>
                         </ul>
                         <div class="card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">LLMs</span>
-                            <span class="tech-tag">Algorithm Design</span>
-                            <span class="tech-tag">Optimization</span>
+                            <span class="tech-tag">Python</span><span class="tech-tag">LLMs</span>
+                            <span class="tech-tag">Algorithm Design</span><span class="tech-tag">Optimization</span>
                         </div>
                     </article>
                     <article class="card project-card">
@@ -172,18 +177,16 @@
                             <li>Applied statistics and correlation analysis; generated visualizations revealing trends between brewing conditions and flavor-related indicators.</li>
                         </ul>
                         <div class="card-tech">
-                            <span class="tech-tag">MATLAB</span>
-                            <span class="tech-tag">Excel</span>
-                            <span class="tech-tag">Data Visualization</span>
-                            <span class="tech-tag">Statistics</span>
+                            <span class="tech-tag">MATLAB</span><span class="tech-tag">Excel</span>
+                            <span class="tech-tag">Data Visualization</span><span class="tech-tag">Statistics</span>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
-    </div><!-- /page-research -->
+    </div>
 
-    <!-- ═══════════════ PROJECTS PAGE ═══════════════ -->
+    <!-- ═══════ PROJECTS ═══════ -->
     <div class="page-section" id="page-projects">
         <section class="section page-top">
             <div class="container">
@@ -200,10 +203,8 @@
                             <li>Deployed to GitHub Pages with full version control via Git — updates go live within 30 seconds of a push.</li>
                         </ul>
                         <div class="card-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span><span class="tech-tag">Git</span>
                             <span class="tech-tag">GitHub Pages</span>
                         </div>
                         <a href="https://github.com/MuhammadAnasTahir/MuhammadAnasTahir.github.io" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub &#8594;</a>
@@ -216,9 +217,9 @@
                 </div>
             </div>
         </section>
-    </div><!-- /page-projects -->
+    </div>
 
-    <!-- ═══════════════ EXPERIENCE PAGE ═══════════════ -->
+    <!-- ═══════ EXPERIENCE ═══════ -->
     <div class="page-section" id="page-experience">
         <section class="section page-top">
             <div class="container">
@@ -231,9 +232,9 @@
                 </div>
             </div>
         </section>
-    </div><!-- /page-experience -->
+    </div>
 
-    <!-- ═══════════════ MORE PAGE ═══════════════ -->
+    <!-- ═══════ MORE ═══════ -->
     <div class="page-section" id="page-more">
         <section class="section page-top">
             <div class="container">
@@ -241,35 +242,34 @@
                 <h2 class="section-title">What I've Done</h2>
                 <div class="timeline">
                     <div class="timeline-item card">
-                        <div class="timeline-header"><div><h3>Sports Complex Associate &amp; Senior Event Associate</h3><p class="card-meta">Department of Athletics, Duke Kunshan University &middot; Aug 2025 &ndash; Present</p></div><span class="badge badge-green">Current</span></div>
+                        <div class="timeline-header"><div><h3>Sports Complex Associate &amp; Senior Event Associate</h3><p class="card-meta">Department of Athletics, DKU &middot; Aug 2025 &ndash; Present</p></div><span class="badge badge-green">Current</span></div>
                         <ul class="card-list">
-                            <li>Managed front-desk operations including member check-ins, facility inquiries, and sports equipment tracking; coordinated logistics for inter-university tournaments including the DKU Invitational Cup and Sino-Foreign University Cup.</li>
-                            <li>Contributed to events with 1,000+ participants and delivered consistent services to 2,000+ registered sports complex members.</li>
+                            <li>Managed front-desk operations, equipment tracking, and coordinated logistics for inter-university tournaments including the DKU Invitational Cup and Sino-Foreign University Cup.</li>
+                            <li>Contributed to events with 1,000+ participants; served 2,000+ registered sports complex members.</li>
                         </ul>
                     </div>
                     <div class="timeline-item card">
                         <div class="timeline-header"><div><h3>Chinese Language Peer Tutor</h3><p class="card-meta">Language and Culture Center, DKU &middot; Jan 2026 &ndash; Present</p></div><span class="badge badge-green">Current</span></div>
                         <ul class="card-list">
-                            <li>Supporting international students in improving their spoken and written Chinese for academic and daily communication.</li>
-                            <li>Conducting peer tutoring sessions focused on conversational practice, vocabulary, and grammar clarification.</li>
+                            <li>Supporting international students in improving spoken and written Chinese for academic and daily communication.</li>
                         </ul>
                     </div>
                     <div class="timeline-item card">
-                        <div class="timeline-header"><div><h3>Board Member &mdash; Student Leaders Board (SLB)</h3><p class="card-meta">Duke Kunshan University &middot; Dec 2025 &ndash; Present</p></div><span class="badge badge-green">Current</span></div>
+                        <div class="timeline-header"><div><h3>Board Member — Student Leaders Board (SLB)</h3><p class="card-meta">Duke Kunshan University &middot; Dec 2025 &ndash; Present</p></div><span class="badge badge-green">Current</span></div>
                         <ul class="card-list">
-                            <li>Working with students, faculty, and administrators to identify issues, propose solutions, and advance community-focused initiatives.</li>
-                            <li>Representing students and advocating for improvements to academic, residential, and co-curricular experiences.</li>
+                            <li>Working with students, faculty, and administrators to identify issues and advance community-focused initiatives.</li>
+                            <li>Advocating for improvements to academic, residential, and co-curricular experiences.</li>
                         </ul>
                     </div>
                     <div class="timeline-item card">
                         <div class="timeline-header"><div><h3>SPICE Committee Member</h3><p class="card-meta">Student Partnership for Innovation &amp; Change in Education, DKU &middot; Jan 2026 &ndash; Present</p></div><span class="badge badge-green">Current</span></div>
-                        <ul class="card-list"><li>Working with the Dean of Academic Strategy and Innovation to ensure collaboration between students and academic offices on educational innovation and improved teaching and learning environment.</li></ul>
+                        <ul class="card-list"><li>Collaborating with the Dean of Academic Strategy and Innovation on educational improvement and learning environment initiatives.</li></ul>
                     </div>
                     <div class="timeline-item card">
-                        <div class="timeline-header"><div><h3>Marketing Intern</h3><p class="card-meta">INSIDER (SMC-PVT) LTD, Lahore, Pakistan &middot; June &ndash; July 2023</p></div></div>
+                        <div class="timeline-header"><div><h3>Marketing Intern</h3><p class="card-meta">INSIDER (SMC-PVT) LTD, Lahore &middot; June &ndash; July 2023</p></div></div>
                         <ul class="card-list">
-                            <li>Designed marketing strategy by analyzing sales and marketing trends through SEMrush and Excel.</li>
-                            <li>Increased viewership by <strong>70%</strong> and received endorsement from the company CEO.</li>
+                            <li>Designed marketing strategy via SEMrush and Excel analysis.</li>
+                            <li>Increased viewership by <strong>70%</strong>; received endorsement from company CEO.</li>
                         </ul>
                     </div>
                 </div>
@@ -279,13 +279,13 @@
                         <div class="skill-category card"><h3>Programming</h3><div class="skill-tags"><span class="tech-tag">Python</span><span class="tech-tag">Java</span><span class="tech-tag">C++</span><span class="tech-tag">VB.net</span><span class="tech-tag">MATLAB</span></div></div>
                         <div class="skill-category card"><h3>Data &amp; Analysis</h3><div class="skill-tags"><span class="tech-tag">Excel</span><span class="tech-tag">Data Visualization</span><span class="tech-tag">Statistics</span><span class="tech-tag">Correlation Analysis</span></div></div>
                         <div class="skill-category card"><h3>Tools &amp; Design</h3><div class="skill-tags"><span class="tech-tag">Adobe Suite</span><span class="tech-tag">MS Office</span><span class="tech-tag">Canva</span><span class="tech-tag">SEMrush</span></div></div>
-                        <div class="skill-category card"><h3>Languages</h3><div class="skill-tags"><span class="tech-tag">English &mdash; Fluent</span><span class="tech-tag">Urdu &mdash; Native</span><span class="tech-tag">Punjabi &mdash; Native</span><span class="tech-tag">Chinese &mdash; Beginner</span></div></div>
+                        <div class="skill-category card"><h3>Languages</h3><div class="skill-tags"><span class="tech-tag">English — Fluent</span><span class="tech-tag">Urdu — Native</span><span class="tech-tag">Punjabi — Native</span><span class="tech-tag">Chinese — Beginner</span></div></div>
                         <div class="skill-category card"><h3>Certificates</h3><div class="skill-tags"><span class="tech-tag">AI &amp; Machine Learning</span><span class="tech-tag">Python Full Course</span><span class="tech-tag">Climate Change &amp; Human Rights</span></div></div>
                     </div>
                 </div>
             </div>
         </section>
-    </div><!-- /page-more -->
+    </div>
 
     <!-- FOOTER -->
     <footer class="footer">

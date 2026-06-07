@@ -22,7 +22,7 @@ themeToggle.addEventListener('click', () => {
    MOBILE HAMBURGER
 ═══════════════════════════════════════ */
 
-const hamburger = document.getElementById('hamburger');
+const hamburger  = document.getElementById('hamburger');
 const navLinksEl = document.getElementById('navLinks');
 
 hamburger.addEventListener('click', () => {
@@ -33,43 +33,37 @@ hamburger.addEventListener('click', () => {
 
 /* ═══════════════════════════════════════
    SPA PAGE NAVIGATION
-   Every element with [data-page] switches
-   to that page when clicked.
-   No scroll-based switching at all.
 ═══════════════════════════════════════ */
 
 const navLinkEls   = document.querySelectorAll('.nav-link[data-page]');
 const pageSections = document.querySelectorAll('.page-section');
 
 function switchPage(pageId) {
-    // 1. Hide every page section
+    // Hide all pages
     pageSections.forEach(p => p.classList.remove('active'));
 
-    // 2. Show only the requested one
+    // Show target page
     const target = document.getElementById('page-' + pageId);
     if (target) target.classList.add('active');
 
-    // 3. Update nav tab highlight
+    // Highlight active nav link
     navLinkEls.forEach(l => l.classList.remove('active'));
     const matchingLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
     if (matchingLink) matchingLink.classList.add('active');
 
-    // 4. Close mobile menu
+    // Close mobile menu
     navLinksEl.classList.remove('open');
     hamburger.classList.remove('open');
 
-    // 5. Jump to top
+    // Jump to top
     window.scrollTo(0, 0);
 
-    // 6. Canvas only runs on home page
-    if (pageId === 'home') {
-        neuralCanvas.start();
-    } else {
-        neuralCanvas.stop();
-    }
+    // Canvas only runs on home page
+    if (pageId === 'home') neuralCanvas.start();
+    else                   neuralCanvas.stop();
 }
 
-// Wire up every [data-page] element (nav links, brand, hero buttons)
+// Wire up every [data-page] element
 document.querySelectorAll('[data-page]').forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault();
@@ -92,42 +86,50 @@ window.addEventListener('scroll', () => {
 
 /* ═══════════════════════════════════════
    NEURAL NETWORK CANVAS
-   White particles on dark navy.
-   Large connection distance = dense net.
-   Mouse repels nearby nodes.
+   ─────────────────────────────────────
+   • Stagnant by default — particles freeze
+     until the mouse enters the hero area.
+   • On hover: mouse pushes nearby nodes.
+     Strong damping returns them to rest.
+   • Dense web: COUNT=150, CONNECT=210px.
+   • Fills the full hero background.
 ═══════════════════════════════════════ */
 
 const neuralCanvas = (() => {
-    const el  = document.getElementById('neural-canvas');
+    const el = document.getElementById('neural-canvas');
     if (!el) return { start() {}, stop() {} };
     const ctx = el.getContext('2d');
 
-    // ── Tuning knobs ──────────────────────
-    const COUNT       = 100;   // number of particles
-    const CONNECT     = 190;   // max px distance to draw a line (bigger = denser web)
-    const REPEL_DIST  = 130;   // mouse push radius
-    const REPEL_FORCE = 0.022;
-    const SPEED_CAP   = 1.1;
-    const DOT_MIN_R   = 1.2;
-    const DOT_MAX_R   = 2.5;
-    // ─────────────────────────────────────
+    /* ── Tuning knobs ─────────────────── */
+    const COUNT        = 150;   // number of particles (more = denser)
+    const CONNECT      = 210;   // max distance to draw a line (px)
+    const REPEL_DIST   = 140;   // mouse influence radius (px)
+    const REPEL_FORCE  = 0.028; // how hard the mouse pushes
+    const DAMPING      = 0.88;  // friction per frame (lower = stops faster)
+    const SPEED_CAP    = 1.8;   // max particle speed
+    const DOT_R_MIN    = 1.0;
+    const DOT_R_MAX    = 2.8;
+    /* ──────────────────────────────────── */
 
-    let particles = [];
-    let rafId     = null;
-    const mouse   = { x: -9999, y: -9999 };
+    let particles  = [];
+    let rafId      = null;
+    let isHovering = false;         // tracks whether mouse is over hero
+    const mouse    = { x: -9999, y: -9999 };
 
+    /* Resize canvas to match hero element */
     function resize() {
         el.width  = el.offsetWidth  || window.innerWidth;
         el.height = el.offsetHeight || window.innerHeight;
     }
 
+    /* Create one particle — starts with zero velocity */
     function makeParticle() {
         return {
             x:  Math.random() * el.width,
             y:  Math.random() * el.height,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5,
-            r:  DOT_MIN_R + Math.random() * (DOT_MAX_R - DOT_MIN_R),
+            vx: 0,
+            vy: 0,
+            r:  DOT_R_MIN + Math.random() * (DOT_R_MAX - DOT_R_MIN),
         };
     }
 
@@ -136,36 +138,51 @@ const neuralCanvas = (() => {
         particles = Array.from({ length: COUNT }, makeParticle);
     }
 
+    /* Physics step for one particle */
     function step(p) {
-        // Mouse repulsion
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const d2 = dx * dx + dy * dy;
-        if (d2 < REPEL_DIST * REPEL_DIST && d2 > 0.01) {
-            const d = Math.sqrt(d2);
-            const f = (REPEL_DIST - d) / REPEL_DIST * REPEL_FORCE;
-            p.vx += (dx / d) * f;
-            p.vy += (dy / d) * f;
+        /* Mouse repulsion — only while hovering */
+        if (isHovering) {
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const d2 = dx * dx + dy * dy;
+            if (d2 < REPEL_DIST * REPEL_DIST && d2 > 0.01) {
+                const d = Math.sqrt(d2);
+                const f = (REPEL_DIST - d) / REPEL_DIST * REPEL_FORCE;
+                p.vx += (dx / d) * f;
+                p.vy += (dy / d) * f;
+            }
         }
-        // Speed cap
+
+        /* Damping: slows particles; they come to a near-stop after mouse leaves */
+        p.vx *= DAMPING;
+        p.vy *= DAMPING;
+
+        /* Speed cap */
         const spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-        if (spd > SPEED_CAP) { p.vx = (p.vx / spd) * SPEED_CAP; p.vy = (p.vy / spd) * SPEED_CAP; }
+        if (spd > SPEED_CAP) {
+            p.vx = (p.vx / spd) * SPEED_CAP;
+            p.vy = (p.vy / spd) * SPEED_CAP;
+        }
 
-        p.x += p.vx;  p.y += p.vy;
+        /* Snap to rest if moving imperceptibly */
+        if (spd < 0.005) { p.vx = 0; p.vy = 0; }
 
-        // Wrap edges
-        if (p.x < 0)         p.x = el.width;
-        if (p.x > el.width)  p.x = 0;
-        if (p.y < 0)         p.y = el.height;
-        if (p.y > el.height) p.y = 0;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        /* Bounce off edges (keeps particles spread across canvas) */
+        if (p.x < p.r)            { p.x = p.r;              p.vx *= -0.5; }
+        if (p.x > el.width  - p.r){ p.x = el.width  - p.r;  p.vx *= -0.5; }
+        if (p.y < p.r)            { p.y = p.r;              p.vy *= -0.5; }
+        if (p.y > el.height - p.r){ p.y = el.height - p.r;  p.vy *= -0.5; }
     }
 
+    /* Choose particle/line color based on current theme */
     function colors() {
-        // White lines/dots on dark navy; subtle blue-white on light
-        const dark = html.getAttribute('data-theme') !== 'light';
+        const isDark = html.getAttribute('data-theme') !== 'light';
         return {
-            dot:  dark ? 'rgba(220, 230, 255, 0.75)' : 'rgba(74, 108, 247, 0.55)',
-            line: dark ? 'rgba(200, 220, 255, '       : 'rgba(74, 108, 247, ',
+            dot:  isDark ? 'rgba(210, 225, 255, 0.80)' : 'rgba(74, 108, 247, 0.55)',
+            line: isDark ? 'rgba(200, 218, 255, '      : 'rgba(74, 108, 247, ',
         };
     }
 
@@ -173,29 +190,30 @@ const neuralCanvas = (() => {
         ctx.clearRect(0, 0, el.width, el.height);
         const c = colors();
 
-        // Lines (behind dots)
+        /* Draw connection lines first (below dots) */
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx   = particles[i].x - particles[j].x;
                 const dy   = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < CONNECT) {
-                    const alpha = (1 - dist / CONNECT) * 0.45;
+                    /* Line opacity fades with distance */
+                    const alpha = (1 - dist / CONNECT) * 0.55;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
                     ctx.strokeStyle = c.line + alpha + ')';
-                    ctx.lineWidth   = 0.75;
+                    ctx.lineWidth   = 0.7;
                     ctx.stroke();
                 }
             }
         }
 
-        // Dots
-        ctx.fillStyle = c.dot;
+        /* Draw dots on top */
         particles.forEach(p => {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = c.dot;
             ctx.fill();
         });
     }
@@ -216,20 +234,35 @@ const neuralCanvas = (() => {
         if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
     }
 
-    // Mouse tracking on the hero section (canvas has pointer-events:none)
+    /* ── Mouse tracking ──
+       canvas has pointer-events:none so we listen on the hero section */
     const hero = document.getElementById('hero');
     if (hero) {
         hero.addEventListener('mousemove', e => {
-            const r = el.getBoundingClientRect();
-            mouse.x = e.clientX - r.left;
-            mouse.y = e.clientY - r.top;
+            isHovering = true;
+            const r    = el.getBoundingClientRect();
+            mouse.x    = e.clientX - r.left;
+            mouse.y    = e.clientY - r.top;
         }, { passive: true });
-        hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+        hero.addEventListener('mouseleave', () => {
+            isHovering  = false;
+            mouse.x     = -9999;
+            mouse.y     = -9999;
+        });
     }
 
-    window.addEventListener('resize', resize, { passive: true });
+    /* Refit canvas on window resize */
+    window.addEventListener('resize', () => {
+        resize();
+        /* Keep particles in bounds after resize */
+        particles.forEach(p => {
+            p.x = Math.min(p.x, el.width  - p.r);
+            p.y = Math.min(p.y, el.height - p.r);
+        });
+    }, { passive: true });
 
-    // Boot — home is the default active page
+    /* Boot — home is the default active page */
     init();
     start();
 
