@@ -101,14 +101,14 @@ const neuralCanvas = (() => {
     const ctx = el.getContext('2d');
 
     /* ── Tuning knobs ─────────────────── */
-    const COUNT        = 150;   // number of particles (more = denser)
+    const COUNT        = 190;   // more particles fill empty gaps
     const CONNECT      = 210;   // max distance to draw a line (px)
     const REPEL_DIST   = 140;   // mouse influence radius (px)
     const REPEL_FORCE  = 0.028; // how hard the mouse pushes
     const DAMPING      = 0.88;  // friction per frame (lower = stops faster)
     const SPEED_CAP    = 1.8;   // max particle speed
-    const DOT_R_MIN    = 1.0;
-    const DOT_R_MAX    = 2.8;
+    const DOT_R_MIN    = 0.8;   // smaller dots = more subtle
+    const DOT_R_MAX    = 2.0;
     /* ──────────────────────────────────── */
 
     let particles  = [];
@@ -181,8 +181,9 @@ const neuralCanvas = (() => {
     function colors() {
         const isDark = html.getAttribute('data-theme') !== 'light';
         return {
-            dot:  isDark ? 'rgba(210, 225, 255, 0.80)' : 'rgba(74, 108, 247, 0.55)',
-            line: isDark ? 'rgba(200, 218, 255, '      : 'rgba(74, 108, 247, ',
+            /* Lower opacity = blends into background, less attention-grabbing */
+            dot:  isDark ? 'rgba(200, 218, 255, 0.38)' : 'rgba(74, 108, 247, 0.30)',
+            line: isDark ? 'rgba(190, 210, 255, '      : 'rgba(74, 108, 247, ',
         };
     }
 
@@ -197,8 +198,8 @@ const neuralCanvas = (() => {
                 const dy   = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < CONNECT) {
-                    /* Line opacity fades with distance */
-                    const alpha = (1 - dist / CONNECT) * 0.55;
+                    /* Line opacity fades with distance — kept subtle */
+                    const alpha = (1 - dist / CONNECT) * 0.28;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);

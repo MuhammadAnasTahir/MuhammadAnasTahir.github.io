@@ -6,8 +6,8 @@
 
 :root {
     --bg:              #182233;
-    --bg-alt:          #1d2a3f;
-    --card-bg:         #2F3B4F;
+    --bg-alt:          #182233;
+    --card-bg:         #1d2a3f;
     --border:          rgba(255, 255, 255, 0.09);
     --text:            #FFFFFF;
     --text-muted:      #D1D5DB;
@@ -354,29 +354,14 @@ img { max-width: 100%; display: block; }
     display: block;
 }
 
-/* GitHub hover */
-.social-github:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.18);
-    transform: translateY(-3px);
-}
-
-/* LinkedIn hover */
-.social-linkedin:hover {
-    background: rgba(0, 119, 181, 0.25);
-    border-color: rgba(0, 119, 181, 0.7);
-    box-shadow: 0 4px 20px rgba(0, 119, 181, 0.35);
-    color: #3eb0f5;
-    transform: translateY(-3px);
-}
-
-/* Email hover */
+/* All three social icons — unified white glow on hover */
+.social-github:hover,
+.social-linkedin:hover,
 .social-email:hover {
-    background: rgba(234, 67, 53, 0.2);
-    border-color: rgba(234, 67, 53, 0.6);
-    box-shadow: 0 4px 20px rgba(234, 67, 53, 0.3);
-    color: #f06a60;
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.22);
+    color: #fff;
     transform: translateY(-3px);
 }
 
