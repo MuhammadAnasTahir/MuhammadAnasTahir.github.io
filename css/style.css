@@ -314,7 +314,7 @@ img { max-width: 100%; display: block; }
 /* University logos — no container, images sit directly on bg */
 .hero-unis {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 16px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -326,6 +326,12 @@ img { max-width: 100%; display: block; }
     width: auto;
     display: block;
     /* No object-fit: no empty canvas area, no seam between image bg and page bg */
+}
+
+/* DKU mountain PNG has transparent padding at top — bump height so peaks
+   visually match Duke's filled square */
+.uni-logo[alt="Duke Kunshan University"] {
+    height: 3.6cm;
 }
 
 /* Light mode: swap Duke logo to its light-mode version */
