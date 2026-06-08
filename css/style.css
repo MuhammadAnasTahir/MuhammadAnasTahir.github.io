@@ -261,7 +261,6 @@ img { max-width: 100%; display: block; }
 ═══════════════════════════════════════ */
 
 .hero {
-    min-height: 100vh;
     display: flex;
     align-items: center;
     background-color: var(--bg);
@@ -320,10 +319,11 @@ img { max-width: 100%; display: block; }
     flex-wrap: wrap;
 }
 
-/* Both logos — same height, natural width (no letterboxing at all) */
+/* Both logos — same height, natural width; screen blend erases dark PNG bg */
 .uni-logo {
     height: 3cm;
     width: auto;
+    mix-blend-mode: screen;
     display: block;
     /* No object-fit: no empty canvas area, no seam between image bg and page bg */
 }
@@ -379,42 +379,43 @@ img { max-width: 100%; display: block; }
 }
 
 .social-icon-btn {
-    width: 48px;
-    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1.5px solid rgba(255, 255, 255, 0.22);
-    color: #fff;
-    transition: all 0.22s ease;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    transition: color 0.22s ease, transform 0.22s ease;
     text-decoration: none;
     flex-shrink: 0;
+    padding: 6px;
 }
 
 .social-icon-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     fill: currentColor;
     display: block;
 }
 
-/* All three social icons — unified white glow on hover */
+/* All three social icons — white glow on hover, no box */
 .social-github:hover,
 .social-linkedin:hover,
 .social-email:hover {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.22);
     color: #fff;
     transform: translateY(-3px);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55));
 }
 
 [data-theme="light"] .social-icon-btn {
-    background: rgba(30, 27, 75, 0.06);
-    border-color: rgba(30, 27, 75, 0.18);
+    color: var(--text-muted);
+}
+
+[data-theme="light"] .social-github:hover,
+[data-theme="light"] .social-linkedin:hover,
+[data-theme="light"] .social-email:hover {
     color: var(--text);
+    filter: drop-shadow(0 0 6px rgba(30, 27, 75, 0.35));
 }
 
 /* RIGHT — portrait rectangle image */
