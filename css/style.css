@@ -257,36 +257,24 @@ img { max-width: 100%; display: block; }
 
 /* ═══════════════════════════════════════
    HERO — split layout: text LEFT, image RIGHT
+   No canvas — clean solid background
 ═══════════════════════════════════════ */
 
 .hero {
-    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    background-color: var(--bg);
 }
 
-/* Canvas fills the hero section background */
-.neural-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* The two-column hero layout */
+/* Two-column hero layout */
 .hero-container {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 64px;
     width: 100%;
-    padding-top: 66px;   /* account for fixed navbar */
+    padding-top: 66px;
     padding-bottom: 48px;
 }
 
@@ -296,45 +284,101 @@ img { max-width: 100%; display: block; }
     min-width: 0;
 }
 
-.hero-greeting {
-    display: block;
-    font-size: 1.05rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 8px;
-    letter-spacing: 0.02em;
+/* Name — Merriweather via h1, one row on desktop */
+.hero-name {
+    font-size: clamp(1.9rem, 3vw, 2.75rem);
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    white-space: nowrap;
 }
 
-[data-theme="light"] .hero-greeting { color: var(--text-muted); }
+/* Role line */
+.hero-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
 
-.hero-name {
-    font-size: clamp(2.6rem, 5.5vw, 4rem);
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
+/* University logo pills */
+.hero-unis {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.uni-pill {
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 8px;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.uni-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.uni-logo-square {
+    height: 36px;
+    width: auto;
+    display: block;
+}
+
+.uni-logo-wide {
+    height: 36px;
+    width: auto;
+    display: block;
+}
+
+/* Degree */
+.hero-degree {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-muted);
     margin-bottom: 18px;
 }
 
-[data-theme="light"] .hero-name { color: var(--text); }
-
-.hero-tagline {
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.78);
-    margin-bottom: 10px;
+/* Interest tags with pipe separators */
+.hero-tags {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
-[data-theme="light"] .hero-tagline { color: var(--text-muted); }
-
-.hero-subtitle {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 38px;
-    line-height: 1.5;
+.hero-tag {
+    color: var(--text);
+    font-weight: 500;
 }
 
-[data-theme="light"] .hero-subtitle { color: var(--text-muted); opacity: 0.7; }
+.hero-sep {
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 300;
+    padding: 0 2px;
+}
+
+[data-theme="light"] .hero-sep { color: rgba(30, 27, 75, 0.25); }
+
+/* Location */
+.hero-location {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
 
 /* ─── SOCIAL ICON BUTTONS ─── */
 .hero-social {

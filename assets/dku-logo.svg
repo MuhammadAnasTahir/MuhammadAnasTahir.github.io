@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 75">
+  <!-- Mountain left — light green outer -->
+  <polygon points="2,70 32,4 62,70"  fill="#8DC63F"/>
+  <!-- Mountain left — lighter inner highlight -->
+  <polygon points="17,70 36,14 55,70" fill="#C6E08B"/>
+  <!-- Mountain centre — dark green -->
+  <polygon points="24,70 44,16 64,70" fill="#006B35"/>
+  <!-- Mountain right — navy blue -->
+  <polygon points="42,70 62,10 82,70" fill="#003087"/>
+
+  <!-- Chinese name -->
+  <text x="96" y="30"
+        font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif"
+        font-size="17" font-weight="700" fill="#003087">昆山杜克大学</text>
+  <!-- English name -->
+  <text x="96" y="48"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="10.5" font-weight="700" fill="#003087" letter-spacing="0.9">DUKE KUNSHAN</text>
+  <text x="96" y="62"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="10.5" font-weight="700" fill="#003087" letter-spacing="0.9">UNIVERSITY</text>
+</svg>
