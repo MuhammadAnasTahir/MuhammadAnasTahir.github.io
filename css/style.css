@@ -181,12 +181,13 @@ img { max-width: 100%; display: block; }
     background-color: rgba(255,255,255,0.06);
 }
 
-/* Active tab — white tint to match nav hover glow */
+/* Active tab — clearly white, no blue at all */
 .nav-link.active {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.14);
-    text-shadow: none;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.22) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
 }
 
 [data-theme="light"] .nav-link           { color: var(--text-muted); }
