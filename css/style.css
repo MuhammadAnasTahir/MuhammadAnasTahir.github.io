@@ -196,16 +196,16 @@ img { max-width: 100%; display: block; }
 
 .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: 16px; }
 
-/* ─── RESUME BUTTON — matches theme-toggle style ─── */
+/* ─── RESUME BUTTON ─── */
 .resume-btn {
     display: inline-flex;
     align-items: center;
     gap: 7px;
     padding: 0 14px;
     height: 38px;
-    background: transparent;
-    color: rgba(255,255,255,0.85);
-    border: 1.5px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.92);
+    color: #182233;
+    border: 1.5px solid transparent;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
@@ -222,10 +222,9 @@ img { max-width: 100%; display: block; }
     flex-shrink: 0;
 }
 .resume-btn:hover {
-    border-color: #fff;
-    color: #fff;
-    box-shadow: 0 0 14px rgba(255,255,255,0.25);
-    background: rgba(255,255,255,0.06);
+    background: #fff;
+    color: #182233;
+    box-shadow: 0 0 16px rgba(255,255,255,0.35);
 }
 [data-theme="light"] .resume-btn {
     border-color: rgba(30,27,75,0.3);
