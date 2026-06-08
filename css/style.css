@@ -298,46 +298,44 @@ img { max-width: 100%; display: block; }
 /* Role line */
 .hero-role {
     font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.0rem;
     font-weight: 400;
     color: var(--text-muted);
     margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-/* University logo pills */
+/* University names highlighted in white inside the role line */
+.hero-uni-highlight {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* University logos — no container, images sit directly on bg */
 .hero-unis {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
+    gap: 16px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
-.uni-pill {
-    background: rgba(255, 255, 255, 0.96);
-    border-radius: 8px;
-    padding: 7px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.uni-pill:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-
-.uni-logo-square {
-    height: 36px;
+/* Both logos — same height, no border, no container */
+.uni-logo {
+    height: 52px;
     width: auto;
     display: block;
 }
 
-.uni-logo-wide {
-    height: 36px;
-    width: auto;
-    display: block;
+/* Duke PNG: dark navy bg (#012169) ≈ site bg (#182233) — naturally blends */
+.uni-logo-duke {
+    border-radius: 6px;
+    opacity: 0.90;
+}
+
+/* DKU SVG: transparent background — mountains render clean on dark bg */
+.uni-logo-dku {
+    /* transparent bg from SVG, no adjustments needed */
 }
 
 /* Degree */

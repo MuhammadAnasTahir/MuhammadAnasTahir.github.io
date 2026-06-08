@@ -1,22 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 75">
-  <!-- Mountain left — light green outer -->
-  <polygon points="2,70 32,4 62,70"  fill="#8DC63F"/>
-  <!-- Mountain left — lighter inner highlight -->
-  <polygon points="17,70 36,14 55,70" fill="#C6E08B"/>
-  <!-- Mountain centre — dark green -->
-  <polygon points="24,70 44,16 64,70" fill="#006B35"/>
-  <!-- Mountain right — navy blue -->
-  <polygon points="42,70 62,10 82,70" fill="#003087"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <!-- Gradient for the light green left mountain -->
+    <linearGradient id="lgGreen" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%"   stop-color="#C8EE72"/>
+      <stop offset="55%"  stop-color="#8DC640"/>
+      <stop offset="100%" stop-color="#4A9920"/>
+    </linearGradient>
+    <!-- Inner glow highlight where mountains meet -->
+    <linearGradient id="glow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%"   stop-color="#EEFAAA"/>
+      <stop offset="100%" stop-color="#C8EE72" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
 
-  <!-- Chinese name -->
-  <text x="96" y="30"
-        font-family="'PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif"
-        font-size="17" font-weight="700" fill="#003087">昆山杜克大学</text>
-  <!-- English name -->
-  <text x="96" y="48"
-        font-family="Arial,Helvetica,sans-serif"
-        font-size="10.5" font-weight="700" fill="#003087" letter-spacing="0.9">DUKE KUNSHAN</text>
-  <text x="96" y="62"
-        font-family="Arial,Helvetica,sans-serif"
-        font-size="10.5" font-weight="700" fill="#003087" letter-spacing="0.9">UNIVERSITY</text>
+  <!-- Dark green mountain (back-left) -->
+  <polygon points="60,285 152,42 244,285" fill="#006B35"/>
+
+  <!-- Light green mountain (front-left) -->
+  <polygon points="10,285 130,18 230,285" fill="url(#lgGreen)"/>
+
+  <!-- Inner centre glow highlight -->
+  <polygon points="118,285 150,60 182,285" fill="url(#glow)"/>
+
+  <!-- Navy blue mountain (right) -->
+  <polygon points="140,285 228,42 298,285" fill="#003087"/>
 </svg>
