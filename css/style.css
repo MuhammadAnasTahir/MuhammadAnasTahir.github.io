@@ -328,6 +328,11 @@ img { max-width: 100%; display: block; }
     /* No object-fit: no empty canvas area, no seam between image bg and page bg */
 }
 
+/* Light mode: swap Duke logo to its light-mode version */
+[data-theme="light"] .uni-logo[alt="Duke University"] {
+    content: url('../assets/duke-logo-light.png');
+}
+
 /* Degree */
 .hero-degree {
     font-family: 'Inter', sans-serif;
