@@ -290,6 +290,7 @@ img { max-width: 100%; display: block; }
     color: var(--text);
     line-height: 1.1;
     letter-spacing: -0.02em;
+    margin-top: 28px;
     margin-bottom: 10px;
     white-space: nowrap;
 }
@@ -335,11 +336,14 @@ img { max-width: 100%; display: block; }
     margin-bottom: 18px;
 }
 
-/* Tags + location wrapper — shrinks to tags content width so
-   location centres exactly under the tags text */
+/* Tags + location + social wrapper — shrinks to tags content width,
+   stacks children so social icons centre under location */
 .hero-interests {
     width: fit-content;
     margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Interest tags — LEFT aligned, all text + separators same colour */
@@ -375,6 +379,8 @@ img { max-width: 100%; display: block; }
     display: flex;
     gap: 12px;
     align-items: center;
+    justify-content: center;
+    margin-top: 12px;
 }
 
 .social-icon-btn {
