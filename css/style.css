@@ -15,7 +15,7 @@
     --accent-hover:    #6b86f9;
     --accent-alt:      #38d9a9;
     --shadow:          0 8px 32px rgba(0, 0, 0, 0.45);
-    --nav-bg:          rgba(24, 34, 51, 0.88);
+    --nav-bg:          #1d2a3f;
     --badge-bg:        rgba(74, 108, 247, 0.18);
     --badge-text:      #8aaafb;
     --badge-green-bg:  rgba(56, 217, 169, 0.15);
@@ -37,7 +37,7 @@
     --accent-hover:    #3558e8;
     --accent-alt:      #0d9488;
     --shadow:          0 8px 32px rgba(0, 0, 0, 0.1);
-    --nav-bg:          rgba(238, 242, 255, 0.92);
+    --nav-bg:          var(--card-bg);
     --badge-bg:        rgba(74, 108, 247, 0.1);
     --badge-text:      #4a6cf7;
     --badge-green-bg:  rgba(13, 148, 136, 0.1);
@@ -194,7 +194,37 @@ img { max-width: 100%; display: block; }
 [data-theme="light"] .nav-link:hover     { color: var(--accent); text-shadow: none; background-color: rgba(74,108,247,0.07); }
 [data-theme="light"] .nav-link.active    { color: var(--accent); background-color: rgba(74,108,247,0.1); text-shadow: none; box-shadow: none; }
 
-.nav-actions { display: flex; align-items: center; gap: 10px; }
+.nav-actions { display: flex; align-items: center; gap: 10px; margin-left: 16px; }
+
+/* ─── RESUME BUTTON ─── */
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.15s;
+    white-space: nowrap;
+}
+.resume-btn svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+.resume-btn:hover {
+    background-color: #3a5ce5;
+    transform: translateY(-1px);
+}
+[data-theme="light"] .resume-btn { color: #fff; }
 
 /* ─── DARK MODE TOGGLE — bordered square box ─── */
 .theme-toggle {
@@ -615,7 +645,7 @@ img { max-width: 100%; display: block; }
    FOOTER — centered
 ═══════════════════════════════════════ */
 
-.footer { border-top: 1px solid var(--border); padding: 28px 0; }
+.footer { border-top: 1px solid var(--border); padding: 28px 0; background-color: var(--card-bg); }
 .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 .footer-contact { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; }
 .footer-link { display: inline-flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
