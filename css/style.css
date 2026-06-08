@@ -181,13 +181,13 @@ img { max-width: 100%; display: block; }
     background-color: rgba(255,255,255,0.06);
 }
 
-/* Active tab — clearly white, no blue at all */
+/* Active tab — white glow, same family as hover but stronger */
 .nav-link.active {
-    color: #fff !important;
-    background-color: rgba(255, 255, 255, 0.22) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
-    text-shadow: none !important;
-    box-shadow: none !important;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.65);
+    box-shadow: none;
+    border: none;
 }
 
 [data-theme="light"] .nav-link           { color: var(--text-muted); }
