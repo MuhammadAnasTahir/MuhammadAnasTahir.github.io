@@ -320,14 +320,12 @@ img { max-width: 100%; display: block; }
     flex-wrap: wrap;
 }
 
-/* Both logos — 6 cm wide × 3 cm tall, background already matched to site */
+/* Both logos — same height, natural width (no letterboxing at all) */
 .uni-logo {
-    width: 6cm;
     height: 3cm;
-    object-fit: contain;
-    object-position: left center;
+    width: auto;
     display: block;
-    /* backgrounds were edited to match #182233 — no blend or border needed */
+    /* No object-fit: no empty canvas area, no seam between image bg and page bg */
 }
 
 /* Degree */
