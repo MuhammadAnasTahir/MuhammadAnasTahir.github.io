@@ -328,10 +328,11 @@ img { max-width: 100%; display: block; }
     /* No object-fit: no empty canvas area, no seam between image bg and page bg */
 }
 
-/* Light mode only: DKU mountain PNG has transparent padding — bump height
-   so peaks visually match Duke's filled square in light mode */
+/* Light mode only: multiply blend makes near-white/semi-transparent edge
+   artifacts invisible against the light background; height boost matches Duke */
 [data-theme="light"] .uni-logo[alt="Duke Kunshan University"] {
     height: 3.6cm;
+    mix-blend-mode: multiply;
 }
 
 /* Light mode: swap Duke logo to its light-mode version */
