@@ -314,7 +314,7 @@ img { max-width: 100%; display: block; }
 /* University logos — no container, images sit directly on bg */
 .hero-unis {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 16px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -328,9 +328,9 @@ img { max-width: 100%; display: block; }
     /* No object-fit: no empty canvas area, no seam between image bg and page bg */
 }
 
-/* DKU mountain PNG has transparent padding at top — bump height so peaks
-   visually match Duke's filled square */
-.uni-logo[alt="Duke Kunshan University"] {
+/* Light mode only: DKU mountain PNG has transparent padding — bump height
+   so peaks visually match Duke's filled square in light mode */
+[data-theme="light"] .uni-logo[alt="Duke Kunshan University"] {
     height: 3.6cm;
 }
 
