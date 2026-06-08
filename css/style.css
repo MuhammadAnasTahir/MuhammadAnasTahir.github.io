@@ -319,11 +319,10 @@ img { max-width: 100%; display: block; }
     flex-wrap: wrap;
 }
 
-/* Both logos — same height, natural width; screen blend erases dark PNG bg */
+/* Both logos — same height, natural width; transparent bg via removebg */
 .uni-logo {
     height: 3cm;
     width: auto;
-    mix-blend-mode: screen;
     display: block;
     /* No object-fit: no empty canvas area, no seam between image bg and page bg */
 }
@@ -392,8 +391,8 @@ img { max-width: 100%; display: block; }
 }
 
 .social-icon-btn svg {
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 28px;
     fill: currentColor;
     display: block;
 }
@@ -534,6 +533,7 @@ img { max-width: 100%; display: block; }
 .about-body p {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
+    text-align: justify;
     color: var(--text);
     line-height: 1.85;
     margin-bottom: 20px;
