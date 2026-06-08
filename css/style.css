@@ -320,22 +320,14 @@ img { max-width: 100%; display: block; }
     flex-wrap: wrap;
 }
 
-/* Both logos — same height, no border, no container */
+/* Both logos — 6 cm wide × 3 cm tall, background already matched to site */
 .uni-logo {
-    height: 52px;
-    width: auto;
+    width: 6cm;
+    height: 3cm;
+    object-fit: contain;
+    object-position: left center;
     display: block;
-}
-
-/* Duke PNG: dark navy bg (#012169) ≈ site bg (#182233) — naturally blends */
-.uni-logo-duke {
-    border-radius: 6px;
-    opacity: 0.90;
-}
-
-/* DKU SVG: transparent background — mountains render clean on dark bg */
-.uni-logo-dku {
-    /* transparent bg from SVG, no adjustments needed */
+    /* backgrounds were edited to match #182233 — no blend or border needed */
 }
 
 /* Degree */
@@ -346,36 +338,37 @@ img { max-width: 100%; display: block; }
     margin-bottom: 18px;
 }
 
-/* Interest tags with pipe separators */
+/* Tags + location wrapper — centred as a block */
+.hero-interests {
+    margin-bottom: 32px;
+}
+
+/* Interest tags — all text including | is the same colour */
 .hero-tags {
     font-family: 'Inter', sans-serif;
     font-size: 0.88rem;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    text-align: center;
 }
 
 .hero-tag {
-    color: var(--text);
+    color: var(--text-muted);
     font-weight: 500;
 }
 
+/* Separators exactly the same colour as the tag text */
 .hero-sep {
-    color: rgba(255, 255, 255, 0.25);
-    font-weight: 300;
-    padding: 0 2px;
+    color: var(--text-muted);
+    font-weight: 400;
 }
 
-[data-theme="light"] .hero-sep { color: rgba(30, 27, 75, 0.25); }
-
-/* Location */
+/* Location — centred to match the tags line above */
 .hero-location {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
     color: var(--text-muted);
-    margin-bottom: 32px;
+    text-align: center;
 }
 
 /* ─── SOCIAL ICON BUTTONS ─── */
@@ -530,26 +523,17 @@ img { max-width: 100%; display: block; }
    ABOUT
 ═══════════════════════════════════════ */
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px; align-items: start;
+.about-body {
+    max-width: 720px;
 }
-.about-text p { font-size: 0.95rem; color: var(--text); line-height: 1.8; margin-bottom: 16px; }
-.about-text strong { color: var(--accent); font-weight: 600; }
-.about-highlights { display: flex; flex-direction: column; gap: 14px; }
 
-.highlight-card {
-    display: flex; align-items: center; gap: 16px;
-    background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px 20px;
-    transition: transform 0.2s, border-color 0.2s;
+.about-body p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 20px;
 }
-.highlight-card:hover { transform: translateX(4px); border-color: rgba(74,108,247,0.3); }
-.highlight-icon { font-size: 1.5rem; flex-shrink: 0; }
-.highlight-card div { display: flex; flex-direction: column; }
-.highlight-card strong { font-size: 0.9rem; font-weight: 600; color: var(--text); }
-.highlight-card span  { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
 
 /* ═══════════════════════════════════════
    EDUCATION
@@ -644,7 +628,7 @@ img { max-width: 100%; display: block; }
     .nav-links.open    { display: flex; }
     .nav-link          { padding: 10px 12px; width: 100%; font-size: 0.95rem; }
     .hamburger         { display: flex; }
-    .about-grid        { grid-template-columns: 1fr; }
+    /* about-body is already single-column */
     .edu-body          { grid-template-columns: 1fr; }
     .cards-grid        { grid-template-columns: 1fr; }
     .section           { padding: 72px 0; }
