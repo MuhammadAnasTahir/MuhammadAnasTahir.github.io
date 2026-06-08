@@ -532,6 +532,9 @@ img { max-width: 100%; display: block; }
 /* Less breathing room above About — hero already has padding-bottom */
 #about { padding-top: 52px; }
 
+/* Tighter gap between "About Me" heading and the paragraphs */
+#about .section-title { margin-bottom: 16px; }
+
 .about-body {
     max-width: 720px;
 }
