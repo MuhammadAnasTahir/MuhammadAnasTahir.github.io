@@ -336,18 +336,20 @@ img { max-width: 100%; display: block; }
     margin-bottom: 18px;
 }
 
-/* Tags + location wrapper — centred as a block */
+/* Tags + location wrapper — shrinks to tags content width so
+   location centres exactly under the tags text */
 .hero-interests {
+    width: fit-content;
     margin-bottom: 32px;
 }
 
-/* Interest tags — all text including | is the same colour */
+/* Interest tags — LEFT aligned, all text + separators same colour */
 .hero-tags {
     font-family: 'Inter', sans-serif;
     font-size: 0.88rem;
     margin-bottom: 8px;
     color: var(--text-muted);
-    text-align: center;
+    text-align: left;
 }
 
 .hero-tag {
@@ -355,13 +357,13 @@ img { max-width: 100%; display: block; }
     font-weight: 500;
 }
 
-/* Separators exactly the same colour as the tag text */
+/* Separators — same colour as tag text */
 .hero-sep {
     color: var(--text-muted);
     font-weight: 400;
 }
 
-/* Location — centred to match the tags line above */
+/* Location — centred relative to the tags line width above */
 .hero-location {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
@@ -520,6 +522,9 @@ img { max-width: 100%; display: block; }
 /* ═══════════════════════════════════════
    ABOUT
 ═══════════════════════════════════════ */
+
+/* Less breathing room above About — hero already has padding-bottom */
+#about { padding-top: 52px; }
 
 .about-body {
     max-width: 720px;
