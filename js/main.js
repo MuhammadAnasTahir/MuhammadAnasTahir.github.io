@@ -6,15 +6,39 @@ const html        = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon   = document.getElementById('themeIcon');
 
+/* SVG icons — sun shown in dark mode (click → go light)
+                moon shown in light mode (click → go dark) */
+const SUN_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="4.5"/>
+  <line x1="12" y1="2"    x2="12" y2="5"/>
+  <line x1="12" y1="19"   x2="12" y2="22"/>
+  <line x1="2"  y1="12"   x2="5"  y2="12"/>
+  <line x1="19" y1="12"   x2="22" y2="12"/>
+  <line x1="4.93" y1="4.93"   x2="7.05" y2="7.05"/>
+  <line x1="16.95" y1="16.95" x2="19.07" y2="19.07"/>
+  <line x1="4.93" y1="19.07"  x2="7.05" y2="16.95"/>
+  <line x1="16.95" y1="7.05"  x2="19.07" y2="4.93"/>
+</svg>`;
+
+const MOON_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+</svg>`;
+
+function setThemeIcon(theme) {
+    themeIcon.innerHTML = theme === 'dark' ? SUN_SVG : MOON_SVG;
+}
+
 const savedTheme = localStorage.getItem('theme') || 'dark';
 html.setAttribute('data-theme', savedTheme);
-themeIcon.textContent = savedTheme === 'dark' ? '☀' : '☽';
+setThemeIcon(savedTheme);
 
 themeToggle.addEventListener('click', () => {
     const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
-    themeIcon.textContent = next === 'dark' ? '☀' : '☽';
+    setThemeIcon(next);
 });
 
 
