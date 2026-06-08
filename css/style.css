@@ -196,22 +196,23 @@ img { max-width: 100%; display: block; }
 
 .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: 16px; }
 
-/* ─── RESUME BUTTON ─── */
+/* ─── RESUME BUTTON — matches theme-toggle style ─── */
 .resume-btn {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 7px 16px;
-    background-color: var(--accent);
-    color: #fff;
-    border: none;
+    padding: 0 14px;
+    height: 38px;
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    border: 1.5px solid rgba(255,255,255,0.35);
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.2s, transform 0.15s;
+    transition: all 0.2s;
     white-space: nowrap;
 }
 .resume-btn svg {
@@ -221,10 +222,21 @@ img { max-width: 100%; display: block; }
     flex-shrink: 0;
 }
 .resume-btn:hover {
-    background-color: #3a5ce5;
-    transform: translateY(-1px);
+    border-color: #fff;
+    color: #fff;
+    box-shadow: 0 0 14px rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.06);
 }
-[data-theme="light"] .resume-btn { color: #fff; }
+[data-theme="light"] .resume-btn {
+    border-color: rgba(30,27,75,0.3);
+    color: var(--text-muted);
+}
+[data-theme="light"] .resume-btn:hover {
+    border-color: var(--text);
+    color: var(--text);
+    box-shadow: 0 0 14px rgba(30,27,75,0.15);
+    background: rgba(30,27,75,0.04);
+}
 
 /* ─── DARK MODE TOGGLE — bordered square box ─── */
 .theme-toggle {
@@ -358,11 +370,10 @@ img { max-width: 100%; display: block; }
     /* No object-fit: no empty canvas area, no seam between image bg and page bg */
 }
 
-/* Light mode only: multiply blend makes near-white/semi-transparent edge
-   artifacts invisible against the light background; height boost matches Duke */
+/* Light mode: swap DKU logo to cropped light-mode version (no bottom padding) */
 [data-theme="light"] .uni-logo[alt="Duke Kunshan University"] {
-    height: 3.6cm;
-    mix-blend-mode: multiply;
+    content: url('../assets/dku-logo-light.png');
+    height: 3cm;
 }
 
 /* Light mode: swap Duke logo to its light-mode version */
