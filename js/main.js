@@ -50,12 +50,17 @@ const navLinkEls   = document.querySelectorAll('.nav-link[data-page]');
 const pageSections = document.querySelectorAll('.page-section');
 
 function switchPage(pageId) {
-    // Hide all pages
-    pageSections.forEach(p => p.classList.remove('active'));
+    // Hide all pages and reset animation state
+    pageSections.forEach(p => p.classList.remove('active', 'page-visible'));
 
-    // Show target page
+    // Show target page, then trigger blur-fade on next frame so transition fires
     const target = document.getElementById('page-' + pageId);
-    if (target) target.classList.add('active');
+    if (target) {
+        target.classList.add('active');
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => target.classList.add('page-visible'));
+        });
+    }
 
     // Highlight active nav link
     navLinkEls.forEach(l => l.classList.remove('active'));
@@ -75,6 +80,13 @@ document.querySelectorAll('[data-page]').forEach(el => {
     el.addEventListener('click', e => {
         e.preventDefault();
         switchPage(el.getAttribute('data-page'));
+    });
+});
+
+// Animate in the initial active page on first load
+requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+        document.querySelectorAll('.page-section.active').forEach(p => p.classList.add('page-visible'));
     });
 });
 

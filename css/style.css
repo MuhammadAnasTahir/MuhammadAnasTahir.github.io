@@ -82,8 +82,25 @@ img { max-width: 100%; display: block; }
    SPA — only the active page is shown
 ═══════════════════════════════════════ */
 
-.page-section          { display: none; }
-.page-section.active   { display: block; }
+.page-section {
+    display: none;
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(8px);
+}
+
+/* Step 1: make visible (display:block) but still blurred */
+.page-section.active {
+    display: block;
+}
+
+/* Step 2: animate in — applied one frame after .active via JS */
+.page-section.active.page-visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+    transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
+}
 .page-top              { padding-top: 108px; }
 
 /* ═══════════════════════════════════════
