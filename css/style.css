@@ -89,17 +89,16 @@ img { max-width: 100%; display: block; }
     transform: translateY(8px);
 }
 
-/* Step 1: make visible (display:block) but still blurred */
+/* transition must live here — before page-visible is added — so CSS sees it */
 .page-section.active {
     display: block;
+    transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
 }
 
-/* Step 2: animate in — applied one frame after .active via JS */
 .page-section.active.page-visible {
     opacity: 1;
     filter: blur(0px);
     transform: translateY(0);
-    transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
 }
 .page-top              { padding-top: 108px; }
 
