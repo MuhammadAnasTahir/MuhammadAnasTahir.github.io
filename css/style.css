@@ -679,7 +679,18 @@ img { max-width: 100%; display: block; }
     margin-bottom: 64px;
 }
 
-.exp-card { display: flex; flex-direction: column; }
+.exp-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #202f49;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+.exp-card:hover { border-color: rgba(255, 255, 255, 0.45); }
+[data-theme="light"] .exp-card {
+    background-color: var(--card-bg);
+    border: 1px solid rgba(30, 27, 75, 0.15);
+}
+[data-theme="light"] .exp-card:hover { border-color: rgba(30, 27, 75, 0.3); }
 
 /* Top row: logo + title/org */
 .exp-card-top {
@@ -749,6 +760,22 @@ img { max-width: 100%; display: block; }
     margin-bottom: 10px;
 }
 .exp-body p:last-child { margin-bottom: 0; }
+.exp-body ul { display: flex; flex-direction: column; gap: 8px; }
+.exp-body li {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    padding-left: 16px;
+    position: relative;
+}
+.exp-body li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
 
 /* Skill pill tags */
 .exp-tags {
