@@ -811,7 +811,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Description */
-.exp-body { flex-grow: 1; }
+.exp-body { flex-grow: 0; }
 .exp-body p {
     font-family: 'Inter', sans-serif;
     font-size: 0.92rem;
