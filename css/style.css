@@ -682,15 +682,25 @@ img { max-width: 100%; display: block; }
 .exp-card {
     display: flex;
     flex-direction: column;
-    background-color: #202f49;
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    background: linear-gradient(180deg, #293156 0%, #1e2542 100%);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10),
+                0 10px 30px rgba(0, 0, 0, 0.25);
 }
-.exp-card:hover { border-color: rgba(255, 255, 255, 0.45); }
+.exp-card:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                0 14px 36px rgba(0, 0, 0, 0.35);
+}
 [data-theme="light"] .exp-card {
-    background-color: var(--card-bg);
+    background: linear-gradient(180deg, #ffffff 0%, #f4f6ff 100%);
     border: 1px solid rgba(30, 27, 75, 0.15);
+    box-shadow: 0 6px 20px rgba(30, 27, 75, 0.06);
 }
-[data-theme="light"] .exp-card:hover { border-color: rgba(30, 27, 75, 0.3); }
+[data-theme="light"] .exp-card:hover {
+    border-color: rgba(30, 27, 75, 0.3);
+    box-shadow: 0 14px 32px rgba(30, 27, 75, 0.12);
+}
 
 /* Top row: logo + title/org */
 .exp-card-top {
