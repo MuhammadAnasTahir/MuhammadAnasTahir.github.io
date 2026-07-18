@@ -731,6 +731,15 @@ img { max-width: 100%; display: block; }
 }
 .exp-logo img { height: 100%; width: auto; display: block; }
 
+/* Flat variant: transparent logo sits directly on the card, no tile chrome */
+.exp-logo--flat,
+[data-theme="light"] .exp-logo--flat {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
 .exp-heading h3 {
     font-size: 1.06rem;
     font-weight: 700;
