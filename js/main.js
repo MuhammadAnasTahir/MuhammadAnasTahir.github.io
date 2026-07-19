@@ -103,3 +103,19 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 
+/* ═══════════════════════════════════════
+   SEE MORE EXPERIENCES
+═══════════════════════════════════════ */
+
+const expMoreBtn  = document.getElementById('expMoreBtn');
+const expProGrid  = document.getElementById('expProGrid');
+
+if (expMoreBtn && expProGrid) {
+    expMoreBtn.addEventListener('click', () => {
+        const open = expProGrid.classList.toggle('exp-grid--expanded');
+        expMoreBtn.classList.toggle('open', open);
+        expMoreBtn.querySelector('span').textContent = open ? 'See less' : 'See more';
+    });
+}
+
+

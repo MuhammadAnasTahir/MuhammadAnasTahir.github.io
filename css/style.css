@@ -679,6 +679,54 @@ img { max-width: 100%; display: block; }
     margin-bottom: 64px;
 }
 
+/* Extra experience cards — hidden until "See more" is clicked */
+.exp-card.exp-card--extra { display: none; }
+.exp-grid--expanded .exp-card.exp-card--extra {
+    display: flex;
+    animation: expCardIn 0.4s ease both;
+}
+@keyframes expCardIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.exp-more-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: -28px auto 64px;
+    padding: 9px 22px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.exp-more-btn svg {
+    width: 16px; height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s ease;
+}
+.exp-more-btn:hover {
+    color: var(--accent-alt);
+    border-color: rgba(56, 217, 169, 0.55);
+    box-shadow: 0 0 18px rgba(56, 217, 169, 0.15);
+}
+.exp-more-btn.open svg { transform: rotate(180deg); }
+[data-theme="light"] .exp-more-btn { border-color: rgba(30, 27, 75, 0.18); }
+[data-theme="light"] .exp-more-btn:hover {
+    border-color: rgba(13, 148, 136, 0.45);
+    box-shadow: 0 0 14px rgba(13, 148, 136, 0.12);
+}
+
 .exp-card {
     display: flex;
     flex-direction: column;
