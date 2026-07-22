@@ -111,10 +111,18 @@ const expMoreBtn  = document.getElementById('expMoreBtn');
 const expProGrid  = document.getElementById('expProGrid');
 
 if (expMoreBtn && expProGrid) {
+    const expExtraCount = expProGrid.querySelectorAll('.exp-card--extra').length;
+    const expMoreLabel  = expMoreBtn.querySelector('span');
+
+    const setExpLabel = open => {
+        expMoreLabel.textContent = open ? 'Show less' : `Show more (${expExtraCount} more)`;
+    };
+    setExpLabel(false);
+
     expMoreBtn.addEventListener('click', () => {
         const open = expProGrid.classList.toggle('exp-grid--expanded');
         expMoreBtn.classList.toggle('open', open);
-        expMoreBtn.querySelector('span').textContent = open ? 'See less' : 'See more';
+        setExpLabel(open);
     });
 }
 

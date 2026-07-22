@@ -679,6 +679,9 @@ img { max-width: 100%; display: block; }
     margin-bottom: 64px;
 }
 
+/* Card that should span both grid columns (e.g. a lone card in a section) */
+.exp-card--full { grid-column: 1 / -1; }
+
 /* Extra experience cards — hidden until "See more" is clicked */
 .exp-card.exp-card--extra { display: none; }
 .exp-grid--expanded .exp-card.exp-card--extra {
@@ -911,16 +914,24 @@ img { max-width: 100%; display: block; }
     display: inline-block;
     padding: 4px 11px;
     border-radius: 7px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    color: var(--text-muted);
+    background-color: var(--badge-green-bg);
+    border: 1px solid rgba(56, 217, 169, 0.35);
+    color: var(--badge-green);
     font-family: 'Inter', sans-serif;
     font-size: 0.74rem;
     font-weight: 500;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
-.exp-tag:hover { border-color: var(--accent-alt); color: var(--text); }
+.exp-tag:hover {
+    border-color: var(--accent-alt);
+    color: var(--text);
+    background-color: rgba(56, 217, 169, 0.26);
+}
 [data-theme="light"] .exp-tag {
-    border-color: rgba(30, 27, 75, 0.15);
+    border-color: rgba(13, 148, 136, 0.3);
+}
+[data-theme="light"] .exp-tag:hover {
+    background-color: rgba(13, 148, 136, 0.2);
 }
 
 /* ═══════════════════════════════════════
