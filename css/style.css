@@ -730,6 +730,31 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 0 14px rgba(13, 148, 136, 0.12);
 }
 
+/* Per-card expand / collapse toggle */
+.exp-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    padding: 2px 0;
+    margin-top: 10px;
+    opacity: 0.72;
+    transition: opacity 0.15s;
+}
+.exp-expand-btn:hover { opacity: 1; }
+.exp-expand-btn svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+.exp-expand-btn.open svg { transform: rotate(180deg); }
+
 .exp-card {
     display: flex;
     flex-direction: column;

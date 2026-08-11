@@ -127,3 +127,43 @@ if (expMoreBtn && expProGrid) {
 }
 
 
+/* ═══════════════════════════════════════
+   EXP CARD EXPAND / COLLAPSE
+═══════════════════════════════════════ */
+
+const CHEV_SVG = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+
+document.querySelectorAll('.exp-card').forEach(card => {
+    const body = card.querySelector('.exp-body');
+    if (!body) return;
+    const ul = body.querySelector('ul');
+    if (!ul) return;
+    const items = [...ul.querySelectorAll(':scope > li')];
+    if (items.length <= 1) return;
+
+    // Hide bullets beyond the first
+    items.slice(1).forEach(li => { li.hidden = true; });
+
+    // Hide the tags block initially
+    const tagsEl = card.querySelector('.exp-tags-block') || card.querySelector('.exp-tags');
+    if (tagsEl) tagsEl.hidden = true;
+
+    // Build small toggle button
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'exp-expand-btn';
+    btn.innerHTML = `<span>Show more</span>${CHEV_SVG}`;
+
+    let open = false;
+    btn.addEventListener('click', () => {
+        open = !open;
+        items.slice(1).forEach(li => { li.hidden = !open; });
+        if (tagsEl) tagsEl.hidden = !open;
+        btn.querySelector('span').textContent = open ? 'Show less' : 'Show more';
+        btn.classList.toggle('open', open);
+    });
+
+    body.insertAdjacentElement('afterend', btn);
+});
+
+
