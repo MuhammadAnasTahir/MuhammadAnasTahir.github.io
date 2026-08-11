@@ -141,34 +141,38 @@ document.querySelectorAll('.exp-card').forEach(card => {
     const items = [...ul.querySelectorAll(':scope > li')];
     if (items.length <= 1) return;
 
-    // Hide bullets beyond the first
-    items.slice(1).forEach(li => { li.hidden = true; });
-
-    // Hide the tags block initially
     const tagsEl = card.querySelector('.exp-tags-block') || card.querySelector('.exp-tags');
-    if (tagsEl) tagsEl.hidden = true;
 
-    // Build small toggle button
+    // Move the remaining bullets + skills into an animated reveal wrapper.
+    // It lives inside .exp-body (right after the visible bullet) so it
+    // keeps the same list/tag styling, and grows to its natural height —
+    // no snapping, no guessed pixel values.
+    const wrap = document.createElement('div');
+    wrap.className = 'exp-more-content';
+    const inner = document.createElement('div');
+    inner.className = 'exp-more-content__inner';
+    wrap.appendChild(inner);
+
+    items.slice(1).forEach(li => inner.appendChild(li));
+    if (tagsEl) inner.appendChild(tagsEl);
+    body.appendChild(wrap);
+
+    // Toggle button sits right after .exp-body, so it always lands right
+    // under the wrapper — under the single bullet when collapsed, under
+    // the skills once expanded — without needing to be moved on click.
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'exp-expand-btn';
+    btn.setAttribute('aria-expanded', 'false');
     btn.innerHTML = `<span>Show more</span>${CHEV_SVG}`;
 
     let open = false;
     btn.addEventListener('click', () => {
         open = !open;
-        items.slice(1).forEach(li => { li.hidden = !open; });
-        if (tagsEl) tagsEl.hidden = !open;
-        btn.querySelector('span').textContent = open ? 'Show less' : 'Show more';
+        wrap.classList.toggle('open', open);
         btn.classList.toggle('open', open);
-
-        // Collapsed: sits right under the single visible bullet.
-        // Expanded: moves below the skills block, so "Show less" reads last.
-        if (open) {
-            card.appendChild(btn);
-        } else {
-            body.insertAdjacentElement('afterend', btn);
-        }
+        btn.setAttribute('aria-expanded', String(open));
+        btn.querySelector('span').textContent = open ? 'Show less' : 'Show more';
     });
 
     body.insertAdjacentElement('afterend', btn);

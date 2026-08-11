@@ -768,6 +768,35 @@ img { max-width: 100%; display: block; }
     border-color: rgba(13, 148, 136, 0.5);
     box-shadow: 0 0 12px rgba(13, 148, 136, 0.14);
 }
+.exp-expand-btn:active { transform: translateY(0) scale(0.96); }
+
+/* Animated reveal for the hidden bullets + skills. grid-template-rows
+   0fr -> 1fr grows to the content's real height (no px guessing needed);
+   the inner content fades and slides in slightly after, so the reveal
+   reads as one smooth motion instead of an instant snap. */
+.exp-more-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.exp-more-content.open {
+    grid-template-rows: 1fr;
+}
+.exp-more-content__inner {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.exp-more-content.open .exp-more-content__inner {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
+}
+.exp-more-content__inner > .exp-tags-block { margin-top: 0; }
 
 .exp-card {
     display: flex;
@@ -794,15 +823,15 @@ img { max-width: 100%; display: block; }
                 0 0 20px rgba(13, 148, 136, 0.14);
 }
 
-/* Top row: logo + title/org — min-height reserves room for a 2-line title
-   AND a 2-line org name (worst case), so the meta row below lines up at
-   the same height across side-by-side cards no matter how either wraps */
+/* Top row: logo + title/org — items sit flush at the top (not centered),
+   so the logo and heading start at the same y on every card. The reserved
+   alignment space lives inside .exp-heading instead, below the text, so it
+   never shows up as uneven top padding above the title. */
 .exp-card-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 16px;
     margin-bottom: 16px;
-    min-height: 98px;
 }
 
 .exp-logo {
@@ -832,6 +861,16 @@ img { max-width: 100%; display: block; }
     box-shadow: none;
     border-radius: 0;
 }
+
+/* Wide variant: matches Franchable's natural wordmark proportions (220x93),
+   so a square logo (e.g. Systems Limited) renders at the same tile
+   footprint instead of shrinking to a plain square. */
+.exp-logo--wide { width: 123px; }
+
+/* Reserves room for a 2-line title + 2-line org (worst case) so the meta
+   row below lines up at the same height across side-by-side cards. Text
+   still starts flush at the top — any slack falls below it, invisibly. */
+.exp-heading { min-height: 96px; }
 
 .exp-heading h3 {
     font-size: 1.06rem;
