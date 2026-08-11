@@ -161,6 +161,14 @@ document.querySelectorAll('.exp-card').forEach(card => {
         if (tagsEl) tagsEl.hidden = !open;
         btn.querySelector('span').textContent = open ? 'Show less' : 'Show more';
         btn.classList.toggle('open', open);
+
+        // Collapsed: sits right under the single visible bullet.
+        // Expanded: moves below the skills block, so "Show less" reads last.
+        if (open) {
+            card.appendChild(btn);
+        } else {
+            body.insertAdjacentElement('afterend', btn);
+        }
     });
 
     body.insertAdjacentElement('afterend', btn);
