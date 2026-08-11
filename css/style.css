@@ -730,30 +730,43 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 0 14px rgba(13, 148, 136, 0.12);
 }
 
-/* Per-card expand / collapse toggle */
+/* Per-card expand / collapse toggle — small centered pill, site's signature green */
 .exp-expand-btn {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    background: none;
-    border: none;
-    color: var(--accent);
-    font-family: inherit;
+    gap: 5px;
+    align-self: center;
+    margin: 12px auto 0;
+    padding: 5px 15px;
+    border-radius: 999px;
+    background-color: var(--badge-green-bg);
+    border: 1px solid rgba(56, 217, 169, 0.35);
+    color: var(--accent-alt);
+    font-family: 'Inter', sans-serif;
     font-size: 0.76rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
     cursor: pointer;
-    padding: 2px 0;
-    margin-top: 10px;
-    opacity: 0.72;
-    transition: opacity 0.15s;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
 }
-.exp-expand-btn:hover { opacity: 1; }
 .exp-expand-btn svg {
+    width: 11px; height: 11px;
     flex-shrink: 0;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
+}
+.exp-expand-btn:hover {
+    background-color: rgba(56, 217, 169, 0.24);
+    border-color: rgba(56, 217, 169, 0.6);
+    box-shadow: 0 0 14px rgba(56, 217, 169, 0.18);
+    transform: translateY(-1px);
 }
 .exp-expand-btn.open svg { transform: rotate(180deg); }
+[data-theme="light"] .exp-expand-btn { border-color: rgba(13, 148, 136, 0.3); }
+[data-theme="light"] .exp-expand-btn:hover {
+    background-color: rgba(13, 148, 136, 0.16);
+    border-color: rgba(13, 148, 136, 0.5);
+    box-shadow: 0 0 12px rgba(13, 148, 136, 0.14);
+}
 
 .exp-card {
     display: flex;
@@ -780,16 +793,21 @@ img { max-width: 100%; display: block; }
                 0 0 20px rgba(13, 148, 136, 0.14);
 }
 
-/* Top row: logo + title/org */
+/* Top row: logo + title/org — min-height reserves space for a 2-line title
+   so the meta row below lines up at the same height across side-by-side cards */
 .exp-card-top {
     display: flex;
     align-items: center;
     gap: 16px;
     margin-bottom: 16px;
+    min-height: 68px;
 }
 
+/* Every logo — image, icon, or wordmark — renders in this same square tile
+   so the four different source shapes read as one consistent format */
 .exp-logo {
     height: 52px;
+    width: 52px;
     min-width: 52px;
     flex-shrink: 0;
     border-radius: 12px;
@@ -805,15 +823,13 @@ img { max-width: 100%; display: block; }
     border-color: rgba(30, 27, 75, 0.12);
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
 }
-.exp-logo img { height: 100%; width: auto; display: block; }
-
-/* Flat variant: transparent logo sits directly on the card, no tile chrome */
-.exp-logo--flat,
-[data-theme="light"] .exp-logo--flat {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
+.exp-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 7px;
+    box-sizing: border-box;
+    display: block;
 }
 
 .exp-heading h3 {
