@@ -799,6 +799,7 @@ img { max-width: 100%; display: block; }
 .exp-more-content__inner > .exp-tags-block { margin-top: 0; }
 
 .exp-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: linear-gradient(180deg, #293156 0%, #1e2542 100%);
@@ -822,6 +823,82 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 14px 32px rgba(30, 27, 75, 0.12),
                 0 0 20px rgba(13, 148, 136, 0.14);
 }
+
+/* Hackathon-winner highlight — an always-on gold glow (not just on hover)
+   plus a corner ribbon, so wins are visible at a glance in the grid. */
+.exp-card--winner {
+    border-color: rgba(245, 183, 60, 0.55);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10),
+                0 10px 30px rgba(0, 0, 0, 0.25),
+                0 0 26px rgba(245, 183, 60, 0.16);
+}
+.exp-card--winner:hover {
+    border-color: rgba(245, 183, 60, 0.8);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                0 14px 36px rgba(0, 0, 0, 0.35),
+                0 0 34px rgba(245, 183, 60, 0.32);
+}
+[data-theme="light"] .exp-card--winner {
+    border-color: rgba(191, 130, 15, 0.5);
+    box-shadow: 0 6px 20px rgba(30, 27, 75, 0.06),
+                0 0 22px rgba(191, 130, 15, 0.16);
+}
+[data-theme="light"] .exp-card--winner:hover {
+    border-color: rgba(191, 130, 15, 0.7);
+    box-shadow: 0 14px 32px rgba(30, 27, 75, 0.12),
+                0 0 28px rgba(191, 130, 15, 0.24);
+}
+
+.exp-winner-badge {
+    position: absolute;
+    top: -14px;
+    right: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 13px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffe29a, #e8a83c);
+    color: #3a2705;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 14px rgba(232, 168, 60, 0.45);
+    z-index: 2;
+}
+
+/* Row of small icon links (repo / demo / post) shown right under the
+   heading — always visible, not tucked behind "show more". */
+.exp-project-links {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.exp-project-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background-color: var(--badge-bg);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.exp-project-link svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+}
+.exp-project-link:hover {
+    color: var(--accent-alt);
+    border-color: rgba(56, 217, 169, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgba(56, 217, 169, 0.22);
+}
+[data-theme="light"] .exp-project-link { border-color: rgba(30, 27, 75, 0.12); }
 
 /* Top row: logo + title/org — items sit flush at the top (not centered),
    so the logo and heading start at the same y on every card. The reserved
