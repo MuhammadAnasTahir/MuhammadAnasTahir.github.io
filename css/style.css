@@ -869,36 +869,40 @@ img { max-width: 100%; display: block; }
 }
 
 /* Row of small icon links (repo / demo / post) shown right under the
-   heading — always visible, not tucked behind "show more". */
+   heading — always visible, not tucked behind "show more". Same treatment
+   as the hero's social icons: no box, icon sits directly on the card,
+   glows white on hover instead of getting a tile/border. */
 .exp-project-links {
     display: flex;
-    gap: 8px;
+    gap: 14px;
     margin-bottom: 16px;
 }
 .exp-project-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
-    background-color: var(--badge-bg);
+    background: transparent;
+    border: none;
     color: var(--text-muted);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 2px;
+    transition: color 0.22s ease, transform 0.22s ease;
 }
 .exp-project-link svg {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     fill: currentColor;
+    display: block;
 }
 .exp-project-link:hover {
-    color: var(--accent-alt);
-    border-color: rgba(56, 217, 169, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(56, 217, 169, 0.22);
+    color: #fff;
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55));
 }
-[data-theme="light"] .exp-project-link { border-color: rgba(30, 27, 75, 0.12); }
+[data-theme="light"] .exp-project-link { color: var(--text-muted); }
+[data-theme="light"] .exp-project-link:hover {
+    color: var(--text);
+    filter: drop-shadow(0 0 6px rgba(30, 27, 75, 0.35));
+}
 
 /* Top row: logo + title/org — items sit flush at the top (not centered),
    so the logo and heading start at the same y on every card. The reserved
@@ -930,13 +934,21 @@ img { max-width: 100%; display: block; }
 }
 .exp-logo img { height: 100%; width: auto; display: block; }
 
-/* Flat variant: transparent logo sits directly on the card, no tile chrome */
+/* Flat variant: transparent logo sits directly on the card, no tile chrome.
+   Fixed width + object-fit keeps every flat logo at the same footprint as
+   the square ones (Systems, INSIDER), even when the source isn't square. */
 .exp-logo--flat,
 [data-theme="light"] .exp-logo--flat {
     background: transparent;
     border: none;
     box-shadow: none;
     border-radius: 0;
+    width: 52px;
+}
+.exp-logo--flat img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* Wide variant: matches Franchable's natural wordmark proportions (220x93),
@@ -966,11 +978,14 @@ img { max-width: 100%; display: block; }
 }
 
 /* Meta chips: location + dates */
+/* min-height reserves room for 2 wrapped chip rows (worst case) so cards
+   with a different chip count still rest at the same height side by side */
 .exp-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 18px;
+    min-height: 76px;
 }
 
 .exp-meta-item {
