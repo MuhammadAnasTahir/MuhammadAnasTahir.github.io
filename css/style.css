@@ -894,14 +894,14 @@ img { max-width: 100%; display: block; }
     display: block;
 }
 .exp-project-link:hover {
-    color: #fff;
+    color: var(--accent-alt);
     transform: translateY(-3px);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.55));
+    filter: drop-shadow(0 0 8px rgba(56, 217, 169, 0.55));
 }
 [data-theme="light"] .exp-project-link { color: var(--text-muted); }
 [data-theme="light"] .exp-project-link:hover {
-    color: var(--text);
-    filter: drop-shadow(0 0 6px rgba(30, 27, 75, 0.35));
+    color: var(--accent-alt);
+    filter: drop-shadow(0 0 6px rgba(13, 148, 136, 0.45));
 }
 
 /* Top row: logo + title/org — items sit flush at the top (not centered),
@@ -992,9 +992,11 @@ img { max-width: 100%; display: block; }
 }
 
 .exp-org-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+    font-family: 'Merriweather', serif;
+    font-size: 0.83rem;
+    font-weight: 700;
+    color: var(--text);
+    opacity: 0.85;
     margin-top: 4px;
 }
 
