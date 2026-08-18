@@ -951,6 +951,20 @@ img { max-width: 100%; display: block; }
     object-fit: contain;
 }
 
+/* Black-on-transparent icon logos — invert to white in dark mode */
+.exp-logo--icon img {
+    filter: invert(1);
+}
+[data-theme="light"] .exp-logo--icon img {
+    filter: none;
+}
+
+/* Sach Batao logo: crop to the shield mark, discard the tagline text */
+.exp-logo--crop img {
+    object-fit: cover;
+    object-position: top center;
+}
+
 /* Wide variant: matches Franchable's natural wordmark proportions (220x93),
    so a square logo (e.g. Systems Limited) renders at the same tile
    footprint instead of shrinking to a plain square. */
@@ -959,7 +973,7 @@ img { max-width: 100%; display: block; }
 /* Reserves room for a 2-line title + 2-line org (worst case) so the meta
    row below lines up at the same height across side-by-side cards. Text
    still starts flush at the top — any slack falls below it, invisibly. */
-.exp-heading { min-height: 96px; }
+.exp-heading { }
 
 .exp-heading h3 {
     font-size: 1.06rem;
@@ -977,6 +991,13 @@ img { max-width: 100%; display: block; }
     opacity: 0.85;
 }
 
+.exp-org-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
 /* Meta chips: location + dates */
 /* min-height reserves room for 2 wrapped chip rows (worst case) so cards
    with a different chip count still rest at the same height side by side */
@@ -985,7 +1006,6 @@ img { max-width: 100%; display: block; }
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 18px;
-    min-height: 76px;
 }
 
 .exp-meta-item {
@@ -1036,7 +1056,7 @@ img { max-width: 100%; display: block; }
 
 /* Description — min-height reserves room for the longest single collapsed
    bullet, so the "Show more" toggle lands at the same height on every card */
-.exp-body { flex-grow: 0; min-height: 124px; }
+.exp-body { flex-grow: 0; }
 .exp-body p {
     font-family: 'Inter', sans-serif;
     font-size: 0.92rem;
