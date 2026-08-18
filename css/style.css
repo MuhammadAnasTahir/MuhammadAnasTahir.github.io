@@ -675,6 +675,7 @@ img { max-width: 100%; display: block; }
 .exp-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: start;
     gap: 28px;
     margin-bottom: 64px;
 }
@@ -736,7 +737,7 @@ img { max-width: 100%; display: block; }
     align-items: center;
     gap: 5px;
     align-self: center;
-    margin: auto auto 0;
+    margin: 12px auto 0;
     padding: 5px 15px;
     border-radius: 999px;
     background-color: var(--badge-green-bg);

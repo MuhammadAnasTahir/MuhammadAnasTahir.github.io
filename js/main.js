@@ -179,3 +179,22 @@ document.querySelectorAll('.exp-card').forEach(card => {
 });
 
 
+/* ═══════════════════════════════════════
+   EQUALIZE PAIRED CARD HEIGHTS
+   Runs once after layout so collapsed pairs match the taller card.
+   min-height lets the clicked card grow freely on expand.
+═══════════════════════════════════════ */
+
+requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+        document.querySelectorAll('.exp-grid').forEach(grid => {
+            const cards = [...grid.querySelectorAll(':scope > .exp-card')];
+            for (let i = 0; i + 1 < cards.length; i += 2) {
+                const h = Math.max(cards[i].offsetHeight, cards[i + 1].offsetHeight);
+                cards[i].style.minHeight = h + 'px';
+                cards[i + 1].style.minHeight = h + 'px';
+            }
+        });
+    });
+});
+
