@@ -311,53 +311,65 @@ img { max-width: 100%; display: block; }
 [data-theme="light"] .hamburger span { background-color: var(--text); }
 
 /* ═══════════════════════════════════════
-   HERO — split layout: text LEFT, image RIGHT
-   No canvas — clean solid background
+   HERO — free-flowing dynamic layout
+   Asymmetric split: oversized editorial text LEFT, large portrait RIGHT
 ═══════════════════════════════════════ */
 
-.hero {
+.hero-flow {
     display: flex;
     align-items: center;
     background-color: var(--bg);
+    overflow: hidden;
 }
 
-/* Two-column hero layout */
-.hero-container {
+.hero-flow-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 64px;
+    gap: 48px;
     width: 100%;
-    padding-top: 66px;
-    padding-bottom: 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 108px 32px 64px;
 }
 
-/* LEFT — text block */
-.hero-text {
+.hero-flow-text {
     flex: 1;
     min-width: 0;
+    max-width: 620px;
 }
 
-/* Name — Merriweather via h1, one row on desktop */
-.hero-name {
-    font-size: clamp(1.9rem, 3vw, 2.75rem);
+.hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+}
+
+.hero-flow-name {
+    font-family: 'Merriweather', Georgia, serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.4rem);
     font-weight: 900;
     color: var(--text);
-    line-height: 1.1;
+    line-height: 1.05;
     letter-spacing: -0.02em;
-    margin-top: 28px;
-    margin-bottom: 10px;
-    white-space: nowrap;
+    margin-bottom: 20px;
 }
-
-/* Role line */
-.hero-role {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.0rem;
+.hero-flow-name em {
+    font-style: italic;
     font-weight: 400;
     color: var(--text-muted);
-    margin-bottom: 20px;
+}
+
+.hero-flow-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: var(--text-muted);
     line-height: 1.6;
+    margin-bottom: 14px;
 }
 
 /* University names highlighted in white inside the role line */
@@ -365,6 +377,89 @@ img { max-width: 100%; display: block; }
     color: var(--text);
     font-weight: 600;
 }
+
+.hero-flow-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 32px;
+}
+
+.hero-flow-cta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.hero-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 999px;
+    background: #fff;
+    color: #182233;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+.hero-cta-primary svg { width: 15px; height: 15px; fill: currentColor; }
+.hero-cta-primary:hover {
+    color: #182233;
+    box-shadow: 0 0 22px rgba(255,255,255,0.35);
+    transform: translateY(-2px);
+}
+[data-theme="light"] .hero-cta-primary {
+    background: var(--text);
+    color: #fff;
+}
+[data-theme="light"] .hero-cta-primary:hover {
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(30,27,75,0.25);
+}
+
+.hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+.hero-cta-secondary:hover {
+    border-color: rgba(255,255,255,0.6);
+    background-color: rgba(255,255,255,0.06);
+    color: var(--text);
+}
+[data-theme="light"] .hero-cta-secondary {
+    border-color: rgba(30,27,75,0.25);
+}
+[data-theme="light"] .hero-cta-secondary:hover {
+    border-color: rgba(30,27,75,0.5);
+    background-color: rgba(30,27,75,0.04);
+}
+
+.hero-flow-stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
+.hero-flow-stats strong { color: var(--text); font-weight: 700; }
+.hero-flow-stat-sep { opacity: 0.4; }
 
 /* University logos — no container, images sit directly on bg */
 .hero-unis {
@@ -374,6 +469,7 @@ img { max-width: 100%; display: block; }
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
+.hero-flow-text .hero-unis { margin-bottom: 24px; }
 
 /* Both logos — same height, natural width; transparent bg via removebg */
 .uni-logo {
@@ -394,52 +490,6 @@ img { max-width: 100%; display: block; }
     content: url('../assets/duke-logo-light.png');
 }
 
-/* Degree */
-.hero-degree {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 18px;
-}
-
-/* Tags + location + social wrapper — shrinks to tags content width,
-   stacks children so social icons centre under location */
-.hero-interests {
-    width: fit-content;
-    margin-bottom: 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Interest tags — LEFT aligned, all text + separators same colour */
-.hero-tags {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.88rem;
-    margin-bottom: 8px;
-    color: var(--text-muted);
-    text-align: left;
-}
-
-.hero-tag {
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-/* Separators — same colour as tag text */
-.hero-sep {
-    color: var(--text-muted);
-    font-weight: 400;
-}
-
-/* Location — centred relative to the tags line width above */
-.hero-location {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-align: center;
-}
-
 /* ─── SOCIAL ICON BUTTONS ─── */
 .hero-social {
     display: flex;
@@ -448,6 +498,7 @@ img { max-width: 100%; display: block; }
     justify-content: center;
     margin-top: 12px;
 }
+.hero-flow-social { justify-content: flex-start; margin-top: 0; }
 
 .social-icon-btn {
     display: flex;
@@ -489,29 +540,196 @@ img { max-width: 100%; display: block; }
     filter: drop-shadow(0 0 6px rgba(30, 27, 75, 0.35));
 }
 
-/* RIGHT — portrait rectangle image */
-.hero-image-wrap {
-    flex-shrink: 0;
+/* RIGHT — large asymmetric portrait with ambient glow */
+.hero-flow-image-wrap {
     position: relative;
+    flex-shrink: 0;
+    width: 380px;
 }
 
-.hero-img {
-    width: 300px;
-    height: 400px;
+.hero-flow-image-glow {
+    position: absolute;
+    top: 8%;
+    right: -10%;
+    width: 130%;
+    height: 90%;
+    background: radial-gradient(circle, rgba(74,108,247,0.22) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-flow-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 520px;
     object-fit: cover;
     object-position: center top;
-    border-radius: 16px;
+    border-radius: 20px;
     border: 2px solid rgba(255, 255, 255, 0.18);
     box-shadow:
-        0 24px 64px rgba(0, 0, 0, 0.55),
+        0 32px 72px rgba(0, 0, 0, 0.55),
         0 0 0 1px rgba(255, 255, 255, 0.06);
     display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-flow-img:hover { transform: translateY(-6px); }
+
+[data-theme="light"] .hero-flow-img {
+    border-color: rgba(30, 27, 75, 0.12);
+    box-shadow: 0 28px 64px rgba(30, 27, 75, 0.16);
+}
+[data-theme="light"] .hero-flow-image-glow {
+    background: radial-gradient(circle, rgba(74,108,247,0.14) 0%, transparent 70%);
 }
 
-[data-theme="light"] .hero-img {
-    border-color: rgba(30, 27, 75, 0.12);
-    box-shadow: 0 24px 64px rgba(30, 27, 75, 0.18);
+/* Staggered fade/slide-up entrance */
+.hero-fade {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--d, 0s);
 }
+@keyframes heroFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-fade { animation: none; opacity: 1; transform: none; }
+}
+
+/* ═══════════════════════════════════════
+   NEWS — "Recent Innovations" teaser cards
+═══════════════════════════════════════ */
+
+.news-section { padding-top: 0; }
+
+.news-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.news-title {
+    font-family: 'Merriweather', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.news-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-alt);
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+.news-view-all:hover { gap: 9px; color: var(--accent-alt); }
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-card {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #293156 0%, #1e2542 100%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.news-card:hover {
+    border-color: rgba(245, 197, 24, 0.4);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.3), 0 0 24px rgba(245,197,24,0.1);
+    transform: translateY(-2px);
+}
+[data-theme="light"] .news-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f4f6ff 100%);
+    border-color: rgba(30, 27, 75, 0.12);
+}
+[data-theme="light"] .news-card:hover {
+    border-color: rgba(150, 115, 10, 0.35);
+    box-shadow: 0 14px 32px rgba(30,27,75,0.1), 0 0 20px rgba(150,115,10,0.12);
+}
+
+.news-icon {
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.news-icon svg {
+    width: 34px; height: 34px;
+    fill: none;
+    stroke: var(--text-muted);
+    stroke-width: 1.5;
+}
+[data-theme="light"] .news-icon {
+    background-color: rgba(30,27,75,0.03);
+    border-color: rgba(30,27,75,0.1);
+}
+
+.news-content { flex: 1; min-width: 0; }
+
+.news-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent-alt);
+    margin-bottom: 6px;
+}
+.news-eyebrow svg { width: 13px; height: 13px; fill: currentColor; }
+
+.news-content h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.news-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.news-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.news-tags span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background-color: var(--badge-green-bg);
+    border: 1px solid rgba(245, 197, 24, 0.35);
+    color: var(--badge-green);
+}
+[data-theme="light"] .news-tags span { border-color: rgba(150, 115, 10, 0.3); }
 
 /* ═══════════════════════════════════════
    CARDS
@@ -1305,16 +1523,18 @@ img { max-width: 100%; display: block; }
 ═══════════════════════════════════════ */
 
 @media (max-width: 900px) {
-    .hero-container {
-        flex-direction: column;
+    .hero-flow-container {
+        flex-direction: column-reverse;
         text-align: center;
         gap: 40px;
         padding-top: 100px;
         padding-bottom: 60px;
     }
-    .hero-text { display: flex; flex-direction: column; align-items: center; }
-    .hero-image-wrap { order: -1; }
-    .hero-img { width: 220px; height: 290px; }
+    .hero-flow-text { max-width: 100%; }
+    .hero-flow-desc { margin-left: auto; margin-right: auto; }
+    .hero-flow-cta, .hero-flow-stats, .hero-unis, .hero-flow-social { justify-content: center; }
+    .hero-flow-image-wrap { width: 260px; }
+    .hero-flow-img { height: 340px; }
 }
 
 @media (max-width: 768px) {
@@ -1335,14 +1555,14 @@ img { max-width: 100%; display: block; }
     .hamburger         { display: flex; }
     /* about-body is already single-column */
     .edu-body          { grid-template-columns: 1fr; }
-    .cards-grid        { grid-template-columns: 1fr; }
     .section           { padding: 72px 0; }
     .section-title     { font-size: 1.65rem; }
-    .card-header       { flex-direction: column; }
-    .timeline-header   { flex-direction: column; }
+    .news-card         { flex-direction: column; }
+    .news-icon         { width: 52px; height: 52px; }
+    .news-icon svg     { width: 24px; height: 24px; }
 }
 
 @media (max-width: 480px) {
-    .skills-grid { grid-template-columns: 1fr; }
-    .hero-img    { width: 180px; height: 240px; }
+    .hero-flow-image-wrap { width: 200px; }
+    .hero-flow-img { height: 260px; }
 }
