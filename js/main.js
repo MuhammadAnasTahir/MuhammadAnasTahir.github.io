@@ -150,12 +150,22 @@ document.querySelectorAll('.exp-card').forEach(card => {
     const items = [...ul.querySelectorAll(':scope > li')];
     if (items.length <= 1) return;
 
-    const tagsEl = card.querySelector('.exp-tags-block') || card.querySelector('.exp-tags');
+    const tagsBlock = card.querySelector('.exp-tags-block');
+    const pillsRow  = tagsBlock ? tagsBlock.querySelector('.exp-tags') : null;
 
-    // Skills/tags stay visible right after the single collapsed bullet —
-    // only the remaining bullets go into the animated reveal wrapper.
-    // The wrapper (+ toggle button) sits after the tags, so expanding
-    // grows the card below the always-visible skills row.
+    // Collapsed state: bullet 1 + a one-line clipped preview of the skills.
+    // Expanded state: all bullets together, then the full skills block at
+    // the very bottom. The preview is a clone (skills stay visible while
+    // collapsed); the original tags-block moves into the reveal wrapper
+    // after the extra bullets so it lands at the bottom once expanded.
+    let preview = null;
+    if (pillsRow) {
+        preview = pillsRow.cloneNode(true);
+        preview.classList.remove('exp-tags');
+        preview.classList.add('exp-tags-preview');
+        body.insertAdjacentElement('afterend', preview);
+    }
+
     const wrap = document.createElement('div');
     wrap.className = 'exp-more-content';
     const inner = document.createElement('div');
@@ -163,9 +173,9 @@ document.querySelectorAll('.exp-card').forEach(card => {
     wrap.appendChild(inner);
 
     items.slice(1).forEach(li => inner.appendChild(li));
+    if (tagsBlock) inner.appendChild(tagsBlock);
 
-    const anchor = tagsEl || body;
-    anchor.insertAdjacentElement('afterend', wrap);
+    (preview || body).insertAdjacentElement('afterend', wrap);
 
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -180,6 +190,7 @@ document.querySelectorAll('.exp-card').forEach(card => {
         btn.classList.toggle('open', open);
         btn.setAttribute('aria-expanded', String(open));
         btn.querySelector('span').textContent = open ? 'Show less' : 'Show more';
+        if (preview) preview.classList.toggle('exp-tags-preview--hidden', open);
     });
 
     wrap.insertAdjacentElement('afterend', btn);
@@ -193,7 +204,7 @@ document.querySelectorAll('.exp-card').forEach(card => {
 function animateStatCounter(el) {
     const target = parseFloat(el.dataset.count);
     const suffix = el.dataset.suffix || '';
-    const duration = 1100;
+    const duration = 2200;
     const start = performance.now();
 
     function tick(now) {

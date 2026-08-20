@@ -187,7 +187,7 @@ img { max-width: 100%; display: block; }
     font-weight: 500;
     color: rgba(255,255,255,0.72);
     padding: 7px 15px;
-    border-radius: 6px;
+    border-radius: 0;
     border-bottom: 2px solid transparent;
     transition: color 0.18s, background-color 0.18s, border-color 0.18s;
 }
@@ -221,7 +221,7 @@ img { max-width: 100%; display: block; }
     background: var(--accent-alt);
     color: #131b1c;
     border: 1.5px solid transparent;
-    border-radius: 8px;
+    border-radius: 0;
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
@@ -725,6 +725,7 @@ img { max-width: 100%; display: block; }
     line-height: 1.4;
     margin-bottom: 8px;
 }
+.news-org-highlight { color: var(--accent-alt); opacity: 1; }
 .news-org-sub {
     font-family: 'Merriweather', serif;
     font-size: 0.9rem;
@@ -1517,6 +1518,19 @@ img { max-width: 100%; display: block; }
     margin-top: 18px;
 }
 .exp-tags-block .exp-tags { margin-top: 0; }
+
+/* One-line clipped preview of the skills, shown only while a card is
+   collapsed. The real (full) tags block lives inside the reveal wrapper
+   and appears at the bottom once expanded. */
+.exp-tags-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    max-height: 25px;
+    overflow: hidden;
+}
+.exp-tags-preview--hidden { display: none; }
 
 .exp-tag {
     display: inline-block;
