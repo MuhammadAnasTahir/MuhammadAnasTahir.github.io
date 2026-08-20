@@ -159,18 +159,17 @@ img { max-width: 100%; display: block; }
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 1.15rem;
-    color: #fff;
+    color: var(--accent-alt);
     letter-spacing: -0.01em;
     cursor: pointer;
     transition: color 0.2s, text-shadow 0.2s;
 }
 .nav-brand:hover {
-    color: #fff;
-    text-shadow: 0 0 18px rgba(255,255,255,0.55);
+    color: var(--accent-alt);
+    text-shadow: 0 0 18px rgba(245, 197, 24, 0.55);
 }
 
-[data-theme="light"] .nav-brand { color: var(--text); }
-[data-theme="light"] .nav-brand:hover { text-shadow: none; color: var(--accent); }
+[data-theme="light"] .nav-brand:hover { text-shadow: none; }
 
 /* Nav links */
 .nav-links {
@@ -186,39 +185,38 @@ img { max-width: 100%; display: block; }
     color: rgba(255,255,255,0.72);
     padding: 7px 15px;
     border-radius: 6px;
-    transition: color 0.18s, background-color 0.18s, text-shadow 0.18s, box-shadow 0.18s;
+    border-bottom: 2px solid transparent;
+    transition: color 0.18s, background-color 0.18s, border-color 0.18s;
 }
 
 .nav-link:hover {
-    color: #fff;
-    text-shadow: 0 0 14px rgba(255,255,255,0.5);
-    background-color: rgba(255,255,255,0.06);
+    color: var(--accent-alt);
+    background-color: rgba(245, 197, 24, 0.08);
 }
 
-/* Active tab — white glow, same family as hover but stronger */
+/* Active tab — amber underline, matching the reference nav */
 .nav-link.active {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.08);
-    text-shadow: 0 0 16px rgba(255, 255, 255, 0.65);
-    box-shadow: none;
-    border: none;
+    color: var(--accent-alt);
+    background-color: rgba(245, 197, 24, 0.1);
+    border-bottom-color: var(--accent-alt);
+    font-weight: 600;
 }
 
 [data-theme="light"] .nav-link           { color: var(--text-muted); }
-[data-theme="light"] .nav-link:hover     { color: var(--accent); text-shadow: none; background-color: rgba(74,108,247,0.07); }
-[data-theme="light"] .nav-link.active    { color: var(--accent); background-color: rgba(74,108,247,0.1); text-shadow: none; box-shadow: none; }
+[data-theme="light"] .nav-link:hover     { color: var(--accent-alt); background-color: rgba(150,115,10,0.07); }
+[data-theme="light"] .nav-link.active    { color: var(--accent-alt); background-color: rgba(150,115,10,0.08); border-bottom-color: var(--accent-alt); }
 
 .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: 16px; }
 
-/* ─── RESUME BUTTON ─── */
+/* ─── RESUME BUTTON — solid amber fill, matching the reference nav ─── */
 .resume-btn {
     display: inline-flex;
     align-items: center;
     gap: 7px;
     padding: 0 14px;
     height: 38px;
-    background: rgba(255,255,255,0.92);
-    color: #182233;
+    background: var(--accent-alt);
+    color: #131b1c;
     border: 1.5px solid transparent;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
@@ -236,19 +234,15 @@ img { max-width: 100%; display: block; }
     flex-shrink: 0;
 }
 .resume-btn:hover {
-    background: #fff;
-    color: #182233;
-    box-shadow: 0 0 16px rgba(255,255,255,0.35);
+    background: var(--accent-alt);
+    color: #131b1c;
+    box-shadow: 0 0 16px rgba(245, 197, 24, 0.45);
 }
 [data-theme="light"] .resume-btn {
-    border-color: rgba(30,27,75,0.3);
-    color: var(--text-muted);
+    color: #131b1c;
 }
 [data-theme="light"] .resume-btn:hover {
-    border-color: var(--text);
-    color: var(--text);
-    box-shadow: 0 0 14px rgba(30,27,75,0.15);
-    background: rgba(30,27,75,0.04);
+    box-shadow: 0 0 14px rgba(150,115,10,0.3);
 }
 
 /* ─── DARK MODE TOGGLE — bordered square box ─── */
@@ -351,40 +345,28 @@ img { max-width: 100%; display: block; }
 
 .hero-flow-name {
     font-family: 'Merriweather', Georgia, serif;
-    font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
     font-weight: 900;
     color: var(--text);
-    line-height: 1.05;
+    line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
+    white-space: nowrap;
 }
-.hero-flow-name em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--text-muted);
-}
+.hero-name-accent { color: var(--accent-alt); }
 
 .hero-flow-role {
     font-family: 'Inter', sans-serif;
     font-size: 1.05rem;
     color: var(--text-muted);
     line-height: 1.6;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
 }
 
 /* University names highlighted in white inside the role line */
 .hero-uni-highlight {
     color: var(--text);
     font-weight: 600;
-}
-
-.hero-flow-desc {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    max-width: 520px;
-    margin-bottom: 32px;
 }
 
 .hero-flow-cta {
@@ -460,6 +442,59 @@ img { max-width: 100%; display: block; }
 }
 .hero-flow-stats strong { color: var(--text); font-weight: 700; }
 .hero-flow-stat-sep { opacity: 0.4; }
+
+/* Animated stat counter widgets */
+.hero-stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+.hero-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    min-width: 128px;
+    background-color: rgba(245, 197, 24, 0.06);
+    border: 1px solid rgba(245, 197, 24, 0.22);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.hero-stat-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(245, 197, 24, 0.5);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25), 0 0 20px rgba(245, 197, 24, 0.14);
+}
+.hero-stat-icon {
+    width: 20px; height: 20px;
+    color: var(--accent-alt);
+    margin-bottom: 2px;
+}
+.hero-stat-number {
+    font-family: 'Merriweather', serif;
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--accent-alt);
+    line-height: 1;
+}
+.hero-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+[data-theme="light"] .hero-stat-card {
+    background-color: rgba(150, 115, 10, 0.05);
+    border-color: rgba(150, 115, 10, 0.2);
+}
+[data-theme="light"] .hero-stat-card:hover {
+    border-color: rgba(150, 115, 10, 0.45);
+    box-shadow: 0 10px 24px rgba(30, 27, 75, 0.1), 0 0 16px rgba(150, 115, 10, 0.12);
+}
 
 /* University logos — no container, images sit directly on bg */
 .hero-unis {
@@ -659,24 +694,22 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 14px 32px rgba(30,27,75,0.1), 0 0 20px rgba(150,115,10,0.12);
 }
 
-.news-icon {
+.news-image {
     flex-shrink: 0;
-    width: 88px;
-    height: 88px;
+    width: 220px;
+    height: 140px;
     border-radius: 10px;
-    background-color: rgba(255,255,255,0.04);
+    overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: rgba(255,255,255,0.04);
 }
-.news-icon svg {
-    width: 34px; height: 34px;
-    fill: none;
-    stroke: var(--text-muted);
-    stroke-width: 1.5;
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
-[data-theme="light"] .news-icon {
+[data-theme="light"] .news-image {
     background-color: rgba(30,27,75,0.03);
     border-color: rgba(30,27,75,0.1);
 }
@@ -1430,7 +1463,7 @@ img { max-width: 100%; display: block; }
 }
 .exp-body p:last-child { margin-bottom: 0; }
 .exp-body ul { display: flex; flex-direction: column; gap: 8px; }
-.exp-body li {
+.exp-body li, .exp-more-content__inner li {
     font-family: 'Inter', sans-serif;
     font-size: 0.92rem;
     color: var(--text-muted);
@@ -1438,7 +1471,7 @@ img { max-width: 100%; display: block; }
     padding-left: 20px;
     position: relative;
 }
-.exp-body li::before {
+.exp-body li::before, .exp-more-content__inner li::before {
     content: '';
     position: absolute;
     left: 2px;
@@ -1448,7 +1481,8 @@ img { max-width: 100%; display: block; }
     background-color: var(--accent-alt);
     box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.18);
 }
-[data-theme="light"] .exp-body li::before {
+[data-theme="light"] .exp-body li::before,
+[data-theme="light"] .exp-more-content__inner li::before {
     box-shadow: 0 0 0 3px rgba(150, 115, 10, 0.16);
 }
 
@@ -1470,14 +1504,16 @@ img { max-width: 100%; display: block; }
 
 .exp-tag {
     display: inline-block;
-    padding: 4px 11px;
-    border-radius: 7px;
+    padding: 3px 9px;
+    border-radius: 6px;
     background-color: var(--badge-green-bg);
     border: 1px solid rgba(245, 197, 24, 0.35);
     color: var(--badge-green);
     font-family: 'Inter', sans-serif;
-    font-size: 0.74rem;
-    font-weight: 500;
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
     transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
 .exp-tag:hover {
@@ -1531,8 +1567,8 @@ img { max-width: 100%; display: block; }
         padding-bottom: 60px;
     }
     .hero-flow-text { max-width: 100%; }
-    .hero-flow-desc { margin-left: auto; margin-right: auto; }
-    .hero-flow-cta, .hero-flow-stats, .hero-unis, .hero-flow-social { justify-content: center; }
+    .hero-flow-name { white-space: normal; }
+    .hero-flow-cta, .hero-stats-grid, .hero-unis, .hero-flow-social { justify-content: center; }
     .hero-flow-image-wrap { width: 260px; }
     .hero-flow-img { height: 340px; }
 }
@@ -1558,8 +1594,7 @@ img { max-width: 100%; display: block; }
     .section           { padding: 72px 0; }
     .section-title     { font-size: 1.65rem; }
     .news-card         { flex-direction: column; }
-    .news-icon         { width: 52px; height: 52px; }
-    .news-icon svg     { width: 24px; height: 24px; }
+    .news-image        { width: 100%; height: 160px; }
 }
 
 @media (max-width: 480px) {

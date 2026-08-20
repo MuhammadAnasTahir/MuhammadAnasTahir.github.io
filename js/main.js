@@ -143,10 +143,10 @@ document.querySelectorAll('.exp-card').forEach(card => {
 
     const tagsEl = card.querySelector('.exp-tags-block') || card.querySelector('.exp-tags');
 
-    // Move the remaining bullets + skills into an animated reveal wrapper.
-    // It lives inside .exp-body (right after the visible bullet) so it
-    // keeps the same list/tag styling, and grows to its natural height —
-    // no snapping, no guessed pixel values.
+    // Skills/tags stay visible right after the single collapsed bullet —
+    // only the remaining bullets go into the animated reveal wrapper.
+    // The wrapper (+ toggle button) sits after the tags, so expanding
+    // grows the card below the always-visible skills row.
     const wrap = document.createElement('div');
     wrap.className = 'exp-more-content';
     const inner = document.createElement('div');
@@ -154,12 +154,10 @@ document.querySelectorAll('.exp-card').forEach(card => {
     wrap.appendChild(inner);
 
     items.slice(1).forEach(li => inner.appendChild(li));
-    if (tagsEl) inner.appendChild(tagsEl);
-    body.appendChild(wrap);
 
-    // Toggle button sits right after .exp-body, so it always lands right
-    // under the wrapper — under the single bullet when collapsed, under
-    // the skills once expanded — without needing to be moved on click.
+    const anchor = tagsEl || body;
+    anchor.insertAdjacentElement('afterend', wrap);
+
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'exp-expand-btn';
@@ -175,7 +173,32 @@ document.querySelectorAll('.exp-card').forEach(card => {
         btn.querySelector('span').textContent = open ? 'Show less' : 'Show more';
     });
 
-    body.insertAdjacentElement('afterend', btn);
+    wrap.insertAdjacentElement('afterend', btn);
+});
+
+
+/* ═══════════════════════════════════════
+   HERO STAT COUNTERS
+═══════════════════════════════════════ */
+
+function animateStatCounter(el) {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1100;
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(tick);
+}
+
+document.querySelectorAll('.hero-stat-number').forEach(el => {
+    setTimeout(() => animateStatCounter(el), 500);
 });
 
 
