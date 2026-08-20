@@ -168,6 +168,9 @@ img { max-width: 100%; display: block; }
     color: var(--accent-alt);
     text-shadow: 0 0 18px rgba(245, 197, 24, 0.55);
 }
+/* Hidden on Home — the hero already shows the name at full size, so
+   repeating it in the nav would read as two names on the same page */
+.nav-brand--hidden { visibility: hidden; }
 
 [data-theme="light"] .nav-brand:hover { text-shadow: none; }
 
@@ -372,7 +375,7 @@ img { max-width: 100%; display: block; }
 .hero-flow-cta {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 24px;
     margin-bottom: 24px;
     flex-wrap: wrap;
 }
@@ -382,7 +385,7 @@ img { max-width: 100%; display: block; }
     align-items: center;
     gap: 8px;
     padding: 13px 26px;
-    border-radius: 999px;
+    border-radius: 0;
     background: var(--accent-alt);
     color: #131b1c;
     font-family: 'Inter', sans-serif;
@@ -404,7 +407,7 @@ img { max-width: 100%; display: block; }
     display: inline-flex;
     align-items: center;
     padding: 13px 26px;
-    border-radius: 999px;
+    border-radius: 0;
     border: 1.5px solid rgba(245, 197, 24, 0.4);
     color: var(--accent-alt);
     font-family: 'Inter', sans-serif;
@@ -589,6 +592,8 @@ img { max-width: 100%; display: block; }
     pointer-events: none;
 }
 
+/* No frame/border — the photo dissolves into the page background at its
+   edges via a soft radial mask, instead of sitting in a hard rectangle */
 .hero-flow-img {
     position: relative;
     z-index: 1;
@@ -596,20 +601,13 @@ img { max-width: 100%; display: block; }
     height: 520px;
     object-fit: cover;
     object-position: center top;
-    border-radius: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
-        0 32px 72px rgba(0, 0, 0, 0.55),
-        0 0 0 1px rgba(255, 255, 255, 0.06);
     display: block;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-mask-image: radial-gradient(280px 400px at 50% 35%, black 68%, transparent 100%);
+    mask-image: radial-gradient(280px 400px at 50% 35%, black 68%, transparent 100%);
 }
 .hero-flow-img:hover { transform: translateY(-6px); }
 
-[data-theme="light"] .hero-flow-img {
-    border-color: rgba(30, 27, 75, 0.12);
-    box-shadow: 0 28px 64px rgba(30, 27, 75, 0.16);
-}
 [data-theme="light"] .hero-flow-image-glow {
     background: radial-gradient(circle, rgba(74,108,247,0.14) 0%, transparent 70%);
 }
@@ -709,50 +707,39 @@ img { max-width: 100%; display: block; }
     background-color: rgba(30,27,75,0.03);
 }
 
-.news-content { flex: 1; min-width: 0; padding: 24px; }
+.news-content {
+    flex: 1;
+    min-width: 0;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .news-org {
     font-family: 'Merriweather', serif;
-    font-size: 0.85rem;
+    font-size: 1.02rem;
     font-weight: 700;
     color: var(--text);
     opacity: 0.85;
-    margin-bottom: 4px;
+    line-height: 1.4;
+    margin-bottom: 8px;
 }
 .news-org-sub {
     font-family: 'Merriweather', serif;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--text);
     opacity: 0.85;
-    margin-bottom: 14px;
 }
 
 .news-content h3 {
     font-family: 'Merriweather', serif;
-    font-size: 1.08rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 6px;
+    margin-bottom: 12px;
 }
-
-.news-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.news-tags span {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background-color: var(--badge-green-bg);
-    border: 1px solid rgba(245, 197, 24, 0.35);
-    color: var(--badge-green);
-}
-[data-theme="light"] .news-tags span { border-color: rgba(150, 115, 10, 0.3); }
 
 /* ═══════════════════════════════════════
    IMAGE LIGHTBOX — opened by clicking a news photo

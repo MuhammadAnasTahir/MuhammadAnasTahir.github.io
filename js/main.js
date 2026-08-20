@@ -48,6 +48,7 @@ hamburger.addEventListener('click', () => {
 
 const navLinkEls   = document.querySelectorAll('.nav-link[data-page]');
 const pageSections = document.querySelectorAll('.page-section');
+const navBrandEl   = document.querySelector('.nav-brand');
 
 function switchPage(pageId) {
     // Hide all pages and reset animation state
@@ -67,12 +68,20 @@ function switchPage(pageId) {
     const matchingLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
     if (matchingLink) matchingLink.classList.add('active');
 
+    // Hide the nav brand on Home — the hero already shows the full name
+    if (navBrandEl) navBrandEl.classList.toggle('nav-brand--hidden', pageId === 'home');
+
     // Close mobile menu
     navLinksEl.classList.remove('open');
     hamburger.classList.remove('open');
 
     // Jump to top
     window.scrollTo(0, 0);
+}
+
+if (navBrandEl) {
+    const initialPage = document.querySelector('.page-section.active');
+    navBrandEl.classList.toggle('nav-brand--hidden', initialPage && initialPage.id === 'page-home');
 }
 
 // Wire up every [data-page] element
