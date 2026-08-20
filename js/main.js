@@ -203,6 +203,38 @@ document.querySelectorAll('.hero-stat-number').forEach(el => {
 
 
 /* ═══════════════════════════════════════
+   NEWS IMAGE LIGHTBOX
+═══════════════════════════════════════ */
+
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg    = document.getElementById('lightboxImg');
+const lightboxClose  = document.getElementById('lightboxClose');
+
+function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+}
+
+document.querySelectorAll('.news-image img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+});
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+});
+
+
+/* ═══════════════════════════════════════
    EQUALIZE PAIRED CARD HEIGHTS
    Runs once after layout so collapsed pairs match the taller card.
    min-height lets the clicked card grow freely on expand.
