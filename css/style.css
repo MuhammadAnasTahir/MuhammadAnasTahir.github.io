@@ -1,49 +1,49 @@
 /* ═══════════════════════════════════════
-   COLOR PALETTE
-   Dark : #182233 bg, #2F3B4F cards
-   Light: #EEF2FF bg, #FFFFFF cards
+   COLOR PALETTE — ported from the Stitch "Neural Nexus" design system
+   Dark : #0d1516 bg, #192122 cards (near-black teal-gray)
+   Light: #f5fafb bg, #eff1f1 cards
 ═══════════════════════════════════════ */
 
 :root {
-    --bg:              #182233;
-    --bg-alt:          #182233;
-    --card-bg:         #1d2a3f;
-    --border:          rgba(255, 255, 255, 0.09);
-    --text:            #FFFFFF;
-    --text-muted:      #D1D5DB;
+    --bg:              #0d1516;
+    --bg-alt:          #0d1516;
+    --card-bg:         #192122;
+    --border:          #3b494c;
+    --text:            #dce4e5;
+    --text-muted:      #bac9cc;
     --accent:          #4a6cf7;
     --accent-hover:    #6b86f9;
     --accent-alt:      #f5c518;
     --shadow:          0 8px 32px rgba(0, 0, 0, 0.45);
-    --nav-bg:          #1d2a3f;
+    --nav-bg:          #192122;
     --badge-bg:        rgba(74, 108, 247, 0.18);
     --badge-text:      #8aaafb;
     --badge-green-bg:  rgba(245, 197, 24, 0.15);
     --badge-green:     #f5c518;
-    --tag-bg:          rgba(255, 255, 255, 0.07);
-    --tag-text:        #D1D5DB;
+    --tag-bg:          rgba(220, 228, 229, 0.07);
+    --tag-text:        #bac9cc;
     --tech-bg:         rgba(74, 108, 247, 0.14);
     --tech-text:       #8aaafb;
 }
 
 [data-theme="light"] {
-    --bg:              #EEF2FF;
-    --bg-alt:          #E4E8FA;
-    --card-bg:         #FFFFFF;
-    --border:          rgba(0, 0, 0, 0.08);
-    --text:            #1E1B4B;
-    --text-muted:      #475569;
+    --bg:              #f5fafb;
+    --bg-alt:          #eff1f1;
+    --card-bg:         #eff1f1;
+    --border:          #bec8c9;
+    --text:            #171d1e;
+    --text-muted:      #3f484a;
     --accent:          #4a6cf7;
     --accent-hover:    #3558e8;
     --accent-alt:      #96730a;
     --shadow:          0 8px 32px rgba(0, 0, 0, 0.1);
-    --nav-bg:          var(--card-bg);
+    --nav-bg:          #ffffff;
     --badge-bg:        rgba(74, 108, 247, 0.1);
     --badge-text:      #4a6cf7;
     --badge-green-bg:  rgba(150, 115, 10, 0.1);
     --badge-green:     #96730a;
-    --tag-bg:          rgba(0, 0, 0, 0.05);
-    --tag-text:        #475569;
+    --tag-bg:          rgba(23, 29, 30, 0.05);
+    --tag-text:        #3f484a;
     --tech-bg:         rgba(74, 108, 247, 0.08);
     --tech-text:       #4a6cf7;
 }
@@ -641,7 +641,7 @@ img { max-width: 100%; display: block; }
     gap: 20px;
     padding: 24px;
     border-radius: 14px;
-    background: linear-gradient(180deg, #293156 0%, #1e2542 100%);
+    background: linear-gradient(180deg, #212a2c 0%, #131b1c 100%);
     border: 1px solid rgba(255, 255, 255, 0.14);
     transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
@@ -651,7 +651,7 @@ img { max-width: 100%; display: block; }
     transform: translateY(-2px);
 }
 [data-theme="light"] .news-card {
-    background: linear-gradient(180deg, #ffffff 0%, #f4f6ff 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #eef1f1 100%);
     border-color: rgba(30, 27, 75, 0.12);
 }
 [data-theme="light"] .news-card:hover {
@@ -1021,7 +1021,7 @@ img { max-width: 100%; display: block; }
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background: linear-gradient(180deg, #293156 0%, #1e2542 100%);
+    background: linear-gradient(180deg, #212a2c 0%, #131b1c 100%);
     border: 1px solid rgba(255, 255, 255, 0.26);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10),
                 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -1033,7 +1033,7 @@ img { max-width: 100%; display: block; }
                 0 0 24px rgba(245, 197, 24, 0.18);
 }
 [data-theme="light"] .exp-card {
-    background: linear-gradient(180deg, #ffffff 0%, #f4f6ff 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #eef1f1 100%);
     border: 1px solid rgba(30, 27, 75, 0.15);
     box-shadow: 0 6px 20px rgba(30, 27, 75, 0.06);
 }
