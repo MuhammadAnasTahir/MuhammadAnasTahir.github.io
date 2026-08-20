@@ -256,11 +256,18 @@ document.addEventListener('keydown', e => {
 
 /* ═══════════════════════════════════════
    EQUALIZE PAIRED CARD HEIGHTS
-   Runs once after layout so collapsed pairs match the taller card.
+   Runs after layout so collapsed pairs match the taller card.
    min-height lets the clicked card grow freely on expand.
 ═══════════════════════════════════════ */
 
-requestAnimationFrame(() => {
+function equalizeCardHeights() {
+    document.querySelectorAll('.exp-grid').forEach(grid => {
+        const cards = [...grid.querySelectorAll(':scope > .exp-card')];
+        for (let i = 0; i + 1 < cards.length; i += 2) {
+            cards[i].style.minHeight = '';
+            cards[i + 1].style.minHeight = '';
+        }
+    });
     requestAnimationFrame(() => {
         document.querySelectorAll('.exp-grid').forEach(grid => {
             const cards = [...grid.querySelectorAll(':scope > .exp-card')];
@@ -271,5 +278,14 @@ requestAnimationFrame(() => {
             }
         });
     });
-});
+}
+
+// Run early for the common case (fonts already cached), then re-run once
+// web fonts actually finish loading/swapping and once every image inside a
+// card has loaded — either can reflow bullet text after the first pass.
+requestAnimationFrame(() => requestAnimationFrame(equalizeCardHeights));
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(equalizeCardHeights);
+}
+window.addEventListener('load', equalizeCardHeights);
 
