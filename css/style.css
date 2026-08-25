@@ -592,21 +592,23 @@ img { max-width: 100%; display: block; }
     pointer-events: none;
 }
 
-/* No frame/border — the photo dissolves into the page background at its
-   edges via a soft radial mask, instead of sitting in a hard rectangle */
+/* Real cutout (transparent PNG) — sits directly on the page background,
+   no frame/rectangle/mask trick needed since the transparency is real */
 .hero-flow-img {
     position: relative;
     z-index: 1;
     width: 100%;
     height: 520px;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain;
+    object-position: center bottom;
     display: block;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    -webkit-mask-image: radial-gradient(280px 400px at 50% 35%, black 68%, transparent 100%);
-    mask-image: radial-gradient(280px 400px at 50% 35%, black 68%, transparent 100%);
+    filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.45));
 }
 .hero-flow-img:hover { transform: translateY(-6px); }
+[data-theme="light"] .hero-flow-img {
+    filter: drop-shadow(0 20px 28px rgba(30, 27, 75, 0.2));
+}
 
 [data-theme="light"] .hero-flow-image-glow {
     background: radial-gradient(circle, rgba(74,108,247,0.14) 0%, transparent 70%);
