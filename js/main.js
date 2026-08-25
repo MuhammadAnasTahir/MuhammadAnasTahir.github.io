@@ -267,6 +267,21 @@ document.addEventListener('keydown', e => {
 ═══════════════════════════════════════ */
 
 function equalizeCardHeights() {
+    // Always establish the baseline from each card's COLLAPSED height. If a
+    // card was left expanded (e.g. user expanded it, switched tabs, and
+    // came back) it would otherwise get measured at its tall expanded
+    // height, and that height would get baked in as min-height for the
+    // whole pair — leaving a large empty gap under the shorter, actually-
+    // collapsed neighbor once things settle back down.
+    document.querySelectorAll('.exp-more-content.open').forEach(w => w.classList.remove('open'));
+    document.querySelectorAll('.exp-expand-btn.open').forEach(btn => {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        const span = btn.querySelector('span');
+        if (span) span.textContent = 'Show more';
+    });
+    document.querySelectorAll('.exp-tags-preview--hidden').forEach(p => p.classList.remove('exp-tags-preview--hidden'));
+
     // Two synchronous passes: reading offsetHeight forces layout on demand,
     // so no requestAnimationFrame is needed (and rAF is unreliable here —
     // it silently never fires while a tab isn't the true foreground tab).
