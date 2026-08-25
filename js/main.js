@@ -63,6 +63,12 @@ function switchPage(pageId) {
         });
     }
 
+    // Re-measure paired card heights now that this page is actually visible.
+    // A hidden page-section (display:none) reports offsetHeight 0 for every
+    // card inside it, so equalizing only works once the target page is the
+    // one that's showing — which is exactly what just happened above.
+    if (typeof equalizeCardHeights === 'function') equalizeCardHeights();
+
     // Highlight active nav link
     navLinkEls.forEach(l => l.classList.remove('active'));
     const matchingLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
