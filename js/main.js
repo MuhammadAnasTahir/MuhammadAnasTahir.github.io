@@ -294,6 +294,51 @@ document.addEventListener('keydown', e => {
 
 
 /* ═══════════════════════════════════════
+   CONTACT FORM (More → Connect)
+   Submits straight to Web3Forms — no backend of this site's own.
+═══════════════════════════════════════ */
+
+const contactForm   = document.getElementById('contactForm');
+const contactStatus = document.getElementById('contactStatus');
+
+if (contactForm && contactStatus) {
+    const submitBtn   = contactForm.querySelector('.contact-submit');
+    const submitLabel = contactForm.querySelector('.contact-submit-label');
+
+    contactForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitLabel.textContent = 'Sending...';
+        contactStatus.textContent = '';
+        contactStatus.className = 'contact-status';
+
+        try {
+            const res = await fetch(contactForm.action, {
+                method: 'POST',
+                headers: { Accept: 'application/json' },
+                body: new FormData(contactForm)
+            });
+            const result = await res.json();
+
+            if (result.success) {
+                contactStatus.textContent = "Message sent — thanks! I'll get back to you soon.";
+                contactStatus.classList.add('contact-status--success');
+                contactForm.reset();
+            } else {
+                throw new Error(result.message || 'Submission failed');
+            }
+        } catch (err) {
+            contactStatus.textContent = 'Something went wrong — please email me directly instead.';
+            contactStatus.classList.add('contact-status--error');
+        } finally {
+            submitBtn.disabled = false;
+            submitLabel.textContent = 'Send message';
+        }
+    });
+}
+
+
+/* ═══════════════════════════════════════
    EQUALIZE PAIRED CARD HEIGHTS
    Runs after layout so collapsed pairs match the taller card.
    min-height lets the clicked card grow freely on expand.
