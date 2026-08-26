@@ -471,12 +471,48 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25), 0 0 20px rgba(245, 197, 24, 0.14);
 }
 .hero-stat-number {
+    display: inline-flex;
+    align-items: center;
     font-family: 'Merriweather', serif;
     font-size: 1.9rem;
     font-weight: 900;
     color: var(--accent-alt);
     line-height: 1;
 }
+
+/* Flip-card digit — mimics a flip-calendar page turning over */
+.flip-card {
+    position: relative;
+    display: inline-block;
+    min-width: 0.68em;
+    height: 1em;
+    perspective: 240px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg);
+    transition: transform 0.34s cubic-bezier(0.45, 0, 0.55, 1);
+}
+.flip-card-inner.flipping { transform: rotateX(-180deg); }
+.flip-card-inner.no-transition { transition: none; }
+.flip-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.flip-face--back { transform: rotateX(180deg); }
+.flip-counter-suffix { margin-left: 1px; }
+@media (prefers-reduced-motion: reduce) {
+    .flip-card-inner { transition: none; }
+}
+
 .hero-stat-label {
     font-family: 'Inter', sans-serif;
     font-size: 0.7rem;
@@ -673,6 +709,24 @@ img { max-width: 100%; display: block; }
     background: linear-gradient(180deg, #212a2c 0%, #131b1c 100%);
     border: 1px solid rgba(255, 255, 255, 0.14);
     transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Fly-in entrance — uses the standalone `translate` property (not `transform`)
+   so it never fights with the hover-lift transform above. Re-triggers every
+   time #page-home goes display:none -> block, same mechanism as .hero-fade. */
+.news-card--fly-left,
+.news-card--fly-right {
+    opacity: 0;
+    animation: newsFlyIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--d, 0s);
+}
+.news-card--fly-left  { translate: -70px 0; }
+.news-card--fly-right { translate: 70px 0; }
+@keyframes newsFlyIn {
+    to { opacity: 1; translate: 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .news-card--fly-left, .news-card--fly-right { animation: none; opacity: 1; translate: 0 0; }
 }
 .news-card:hover {
     border-color: rgba(245, 197, 24, 0.4);

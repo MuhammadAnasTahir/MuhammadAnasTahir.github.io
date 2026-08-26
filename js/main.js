@@ -69,6 +69,12 @@ function switchPage(pageId) {
     // one that's showing — which is exactly what just happened above.
     if (typeof equalizeCardHeights === 'function') equalizeCardHeights();
 
+    // Replay the hero stat flip-counters every time we land back on Home.
+    // (The news-card fly-in doesn't need a JS hook — it's a plain CSS
+    // animation that already restarts on its own whenever this page-section
+    // goes display:none -> block, same as the .hero-fade elements.)
+    if (pageId === 'home' && typeof initHeroStatCounters === 'function') initHeroStatCounters();
+
     // Highlight active nav link
     navLinkEls.forEach(l => l.classList.remove('active'));
     const matchingLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
@@ -204,28 +210,55 @@ document.querySelectorAll('.exp-card').forEach(card => {
 
 
 /* ═══════════════════════════════════════
-   HERO STAT COUNTERS
+   HERO STAT COUNTERS — flip-calendar digits
 ═══════════════════════════════════════ */
 
-function animateStatCounter(el) {
-    const target = parseFloat(el.dataset.count);
+function setupFlipCounter(el) {
+    const target = parseInt(el.dataset.count, 10) || 0;
     const suffix = el.dataset.suffix || '';
-    const duration = 2200;
-    const start = performance.now();
 
-    function tick(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(target * eased) + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
-        else el.textContent = target + suffix;
+    el.innerHTML =
+        '<span class="flip-card"><span class="flip-card-inner">' +
+            '<span class="flip-face flip-face--front">0</span>' +
+            '<span class="flip-face flip-face--back">0</span>' +
+        '</span></span>' +
+        (suffix ? '<span class="flip-counter-suffix">' + suffix + '</span>' : '');
+
+    const inner = el.querySelector('.flip-card-inner');
+    const front = el.querySelector('.flip-face--front');
+    const back  = el.querySelector('.flip-face--back');
+
+    let current = 0;
+
+    function flipStep() {
+        if (current >= target) return;
+        const next = current + 1;
+        back.textContent = next;
+        inner.classList.add('flipping');
+
+        inner.addEventListener('transitionend', function onEnd() {
+            inner.removeEventListener('transitionend', onEnd);
+            // Snap the card back to its resting rotation instantly (no
+            // transition), now showing "next" on the front face, so the
+            // following flip has somewhere fresh to animate from.
+            inner.classList.add('no-transition');
+            inner.classList.remove('flipping');
+            front.textContent = next;
+            inner.offsetHeight; // force reflow before re-enabling the transition
+            inner.classList.remove('no-transition');
+            current = next;
+            if (current < target) setTimeout(flipStep, 120);
+        }, { once: true });
     }
-    requestAnimationFrame(tick);
+
+    setTimeout(flipStep, 350);
 }
 
-document.querySelectorAll('.hero-stat-number').forEach(el => {
-    setTimeout(() => animateStatCounter(el), 500);
-});
+function initHeroStatCounters() {
+    document.querySelectorAll('.hero-stat-number').forEach(setupFlipCounter);
+}
+
+initHeroStatCounters();
 
 
 /* ═══════════════════════════════════════
