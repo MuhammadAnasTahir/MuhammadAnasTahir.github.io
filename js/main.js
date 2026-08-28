@@ -371,6 +371,14 @@ function equalizeCardHeights() {
         }
     });
     document.querySelectorAll('.exp-grid').forEach(grid => {
+        // Pairing cards[i]/cards[i+1] to the same height only makes sense
+        // when the grid is actually rendering them side by side. At the
+        // single-column mobile breakpoint they're stacked instead, so
+        // forcing a shared min-height just leaves an empty gap under
+        // whichever card has less content.
+        const columnCount = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+        if (columnCount < 2) return;
+
         const cards = [...grid.querySelectorAll(':scope > .exp-card')];
         for (let i = 0; i + 1 < cards.length; i += 2) {
             const h = Math.max(cards[i].offsetHeight, cards[i + 1].offsetHeight);
